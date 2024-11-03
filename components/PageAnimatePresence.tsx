@@ -1,37 +1,35 @@
 'use client'
 
-
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode } from 'react'
+import PropTypes from 'prop-types'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import FrozenRoute from './FrozenRoute'
 
-const PageAnimatePresence = ({ children }) => {
- 
+interface PageAnimatePresenceProps {
+  children: ReactNode
+}
+
+const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children }) => {
   const pathname = usePathname()
 
-
   const firstLoadVariants = {
-      initial: { opacity: 0 },
-      enter: { opacity: 1 },
-      exit: { opacity: 0, x: -200 },
-  };
+    initial: { opacity: 0 },
+    enter: { opacity: 1 },
+    exit: { opacity: 0, x: -200 },
+  }
   const pageTransition = {
-      duration: 0.8,
-      ease: "easeInOut",
-  };
- 
+    duration: 0.8,
+    ease: "easeInOut",
+  }
 
   return (
     <AnimatePresence mode="popLayout">
-      {/**
-       * We use `motion.div` as the first child of `<AnimatePresence />` Component so we can specify page animations at the page level.
-       * The `motion.div` Component gets re-evaluated when the `key` prop updates, triggering the animation's lifecycles.
-       * During this re-evaluation, the `<FrozenRoute />` Component also gets updated with the new route components.
-       */}
-      <motion.div key={pathname}
+      <motion.div
+        key={pathname}
         initial="initial"
         animate="enter"
+        exit="exit"
         variants={firstLoadVariants}
         transition={pageTransition}
       >
@@ -39,6 +37,11 @@ const PageAnimatePresence = ({ children }) => {
       </motion.div>
     </AnimatePresence>
   )
+}
+
+// Add PropTypes for ESLint validation
+PageAnimatePresence.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default PageAnimatePresence

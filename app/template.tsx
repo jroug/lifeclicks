@@ -1,7 +1,6 @@
 'use client';
 
-import { ReactNode, useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { ReactNode } from 'react';
 import { motion } from "framer-motion";
  
 
@@ -21,7 +20,6 @@ const pageTransition = {
 };
 
 export default function Template({ children }: TemplateProps) {
-    const pathname = usePathname();
 
     return (
             <motion.div 
