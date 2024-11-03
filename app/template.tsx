@@ -17,7 +17,7 @@ const regularVariants = {
 const pageTransition = {
     duration: 0.8,
     ease: "easeInOut",
-};
+}
 
 export default function Template({ children }: TemplateProps) {
 
