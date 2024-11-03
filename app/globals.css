@@ -3,19 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+ 
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+ 
   }
+}
+
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.swiper-wrapper{
+  transition-duration: 500ms !important;
+}
+
+.w-half-important {
+  width: 50% !important;
+}
+
+.w-auto-important {
+  width: auto !important;
 }
