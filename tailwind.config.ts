@@ -15,6 +15,9 @@ const config: Config = {
       screens: {
         '3xl': '1920px',
       },
+      aspectRatio: {
+        '74/93': '74 / 93',
+      },
     },
   },
   plugins: [],
