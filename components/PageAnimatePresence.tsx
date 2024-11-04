@@ -32,6 +32,7 @@ const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children }) =
         exit="exit"
         variants={firstLoadVariants}
         transition={pageTransition}
+        className="outer-motion-div"
       >
         <FrozenRoute>{children}</FrozenRoute>
       </motion.div>

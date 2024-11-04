@@ -15,14 +15,21 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  overflow: hidden;
 }
 
-html::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and Opera */
-}
 
+ 
+/* have scrollbar but hide it in the outer-motion-div*/
+.outer-motion-div{
+  overflow: scroll; 
+  height: 100vh;
+  scrollbar-width: none;  
+  -ms-overflow-style: none; 
+}
+.outer-motion-div::-webkit-scrollbar{
+  display: none;  
+}
 
 body {
   color: var(--foreground);
