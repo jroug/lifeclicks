@@ -22,15 +22,15 @@ const pageTransition = {
 export default function Template({ children }: TemplateProps) {
 
     return (
-            <motion.div 
-                key={"landing"}  // Key based on pathname to trigger animation on route change
-                initial="initial"
-                animate="enter"
-                exit="exit"
-                variants={regularVariants}
-                transition={pageTransition}
-            >
-                {children}
-            </motion.div>
+        <motion.div 
+            key={"landing"}  // Key based on pathname to trigger animation on route change
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            variants={regularVariants}
+            transition={pageTransition}
+        >
+            {children}
+        </motion.div>
     );
 }
