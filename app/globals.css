@@ -49,3 +49,8 @@ body {
   width: auto !important;
 }
 
+@screen md {
+  .md\:w-half-important {
+    width: 50% !important;
+  }
+}
