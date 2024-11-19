@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import FrozenRoute from './FrozenRoute'
+import Footer from './Footer'
 
 interface PageAnimatePresenceProps {
   children: ReactNode
@@ -35,6 +36,7 @@ const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children }) =
         className="outer-motion-div"
       >
         <FrozenRoute>{children}</FrozenRoute>
+        <Footer />
       </motion.div>
     </AnimatePresence>
   )

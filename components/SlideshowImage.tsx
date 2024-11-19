@@ -14,13 +14,13 @@ export default function SlideshowImage({ images, alt, classes }: SlideshowImageP
   const startSlideshow = () => {
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-      console.log('setInterval');
+      // console.log('setInterval');
     }, 1000); // Change image every 2 seconds
   };
 
   const stopSlideshow = () => {
     if (intervalRef.current) {
-      console.log('clearInterval');
+      // console.log('clearInterval');
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -15,14 +14,14 @@ import { FreeMode, Pagination, Mousewheel } from 'swiper/modules';
 
 export default function TestProject() {
     return (
-        <main className="flex items-center justify-center min-h-screen">
+        <main className="flex items-center justify-center custom-slider-height">
             <Swiper
                 modules={[FreeMode, Pagination, Mousewheel]}
                 freeMode={true}
                 spaceBetween={0}
                 slidesPerView={"auto"}
                 mousewheel={true}
-                className="w-full h-screen"
+                className="w-full h-full"
                 breakpoints={{
                     // When window width is >= 768px, change direction to horizontal
                     768: {
@@ -36,7 +35,7 @@ export default function TestProject() {
             >
                 <SwiperSlide key={"021201212"} className="">
                     <div className="flex h-full relative bg-araxnowhite">
-                        <div className="absolute md:relative z-10  bg-araxnowhite flex flex-col items-center justify-center h-screen w-full md:w-half-important" >
+                        <div className="absolute md:relative z-10  bg-araxnowhite flex flex-col items-center justify-center h-full w-full md:w-half-important" >
                             <h1 className="w-full text-6xl text-black text-center">this is some text 0000</h1>
                             <Link href="/" className="w-full text-3xl text-black text-center">back to home</Link>
                         </div>
@@ -98,7 +97,7 @@ export default function TestProject() {
                 </SwiperSlide>
                 <SwiperSlide key={"1000"} className="flex justify-center items-center h-full w-half-important">
                     <div className="w-full h-full relative">
-                    <h2 className="flex items-center justify-center h-screen text-6xl text-black" ><Link href="/projects/test1" >next project 1</Link></h2>
+                    <h2 className="flex items-center justify-center h-full text-6xl text-black" ><Link href="/projects/test1" >next project 1</Link></h2>
                     </div>
                 </SwiperSlide>
             </Swiper>

@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 :root {
  
@@ -34,7 +38,7 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .swiper-wrapper{
@@ -53,4 +57,94 @@ body {
   .md\:w-half-important {
     width: 50% !important;
   }
+}
+
+header{
+  background-color: #000000;
+  /* height: 178px; */
+  
+}
+
+
+/* they need to be the same */
+header .grid div{
+  height: 110px;
+}
+/* .main-wrapper{
+  margin-top: 110px;
+} */
+.custom-padding-top{
+  padding-top: 110px;
+}
+.custom-padding-bottom{
+  padding-bottom: 110px;
+}
+.custom-margin-top-minus{
+  margin-top: -110px;
+}
+/* ************************ */
+
+
+.custom-slider-height{
+    height: calc(100vh - 300px);
+}
+
+footer{
+  background-color: #F5F5F5;
+}
+
+.grid div{
+  /* border:1px solid red; */
+}
+
+.border-custom{
+  border-bottom: 1px solid #000000;
+}
+
+/* .custom-main-menu-wrapper{
+  background-color: #000000;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9;
+  top: calc(-100vh + 110px);
+  transition: top 0.5s;
+}
+
+.custom-main-menu-wrapper.open{
+  top: 110px !important;
+} */
+
+.custom-main-menu-wrapper{
+  background-color: #000000;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -100;
+  top: 0;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.custom-main-menu-wrapper.open{
+  z-index: 9;
+  opacity: 1 !important;
+}
+
+
+.menu-items li{
+  font-family: 'Cormorant Garamond', sans-serif;
+  text-transform: uppercase;
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 100px;
+}
+
+.social-in-menu{
+  margin-right: -170px;
+  font-size: 25px;
+}
+
+.h-custom{
+  height: calc(100vh - 80px);
 }
