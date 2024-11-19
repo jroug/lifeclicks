@@ -38,7 +38,8 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Cormorant Garamond', sans-serif;
+
 }
 
 .swiper-wrapper{
@@ -91,6 +92,7 @@ header .grid div{
 
 footer{
   background-color: #F5F5F5;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .grid div{
@@ -147,4 +149,12 @@ footer{
 
 .h-custom{
   height: calc(100vh - 80px);
+}
+.custom-margins-hr-about{
+  height: 400px;
+  width: 0px;
+  border-right: 1px solid #ffffff;
+  float: right;
+  margin-top: 160px;
+  margin-right: 50px;
 }

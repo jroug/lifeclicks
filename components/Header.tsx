@@ -4,21 +4,28 @@ import React from 'react';
 import Link from "next/link";
 import Image from 'next/image';
 
-const Header: React.FC = () => {
 
+
+
+
+const Header: React.FC = () => {
+    
     const handleHomeClick = () => {
-        // Get the menu and menu text elements with proper typing
         const menu = document.getElementById('main-menu') as HTMLElement | null;
+        const menuText = document.getElementById('menu-text') as HTMLElement | null;
 
         // Toggle the 'open' class on the menu
         menu?.classList.remove('open');
+
+        if (menuText?.innerHTML === 'CLOSE'){
+            menuText.innerHTML = 'MENU';
+        }
     }
 
 
     const handleMenuButtonClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void => {
         e.preventDefault();
 
-        // Get the menu and menu text elements with proper typing
         const menu = document.getElementById('main-menu') as HTMLElement | null;
         const menuText = document.getElementById('menu-text') as HTMLElement | null;
 

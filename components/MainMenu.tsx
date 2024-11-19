@@ -2,14 +2,19 @@
 import React from 'react';
 import Link from 'next/link';
 
+
 const MainMenu = () => {
 
     const handleMenuClick = () => {
-        // Get the menu and menu text elements with proper typing
         const menu = document.getElementById('main-menu') as HTMLElement | null;
+        const menuText = document.getElementById('menu-text') as HTMLElement | null;
 
         // Toggle the 'open' class on the menu
         menu?.classList.remove('open');
+
+        if (menuText?.innerHTML === 'CLOSE'){
+            menuText.innerHTML = 'MENU';
+        }
     }
 
     return (
