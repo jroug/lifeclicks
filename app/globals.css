@@ -43,7 +43,7 @@ body {
 }
 
 .swiper-wrapper{
-  transition-duration: 500ms !important;
+  transition-duration: 300ms !important;
 }
 
 .w-half-important {
@@ -167,4 +167,47 @@ form.contact-us input{
 
 .custom-contact-us-height{
   /* min-height: calc(100vh + 110px); */
+}
+
+
+
+.hoverLayer{
+  opacity:0;
+  transition: opacity 500ms;
+}
+.hoverLayer:hover{
+  opacity:1;
+}
+
+#menu-text,
+.menu-element{
+  transition: color 350ms;
+  color:#ffffff;
+}
+
+.hovered-menu-items .menu-element{
+  color:#ffffff29;
+}
+
+.hovered-menu-items .menu-element:hover{
+  color:#ffffff;
+}
+
+.swiper {
+  background-color: #ffffff;
+  cursor: grab;
+}
+
+.swiper:active {
+  cursor: grabbing;
+}
+
+.santorini-subtitle{
+  transform: translateY(150px);
+}
+
+.sliderCounter{
+  border-bottom:1px solid black;
+  text-align: center;
+  font-size: 25px;
 }

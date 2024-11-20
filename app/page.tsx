@@ -38,12 +38,16 @@ export default function Home() {
             key={i}
             className="group flex justify-center overflow-hidden text-center"
           >
-            <Link href={`/projects/test${i % 2}`} className="w-full h-full" scroll={false}>
+            <Link href={`/projects/test`} className="w-full h-full relative" scroll={false}>
               <SlideshowImage 
                 classes="w-full h-full transform transition-transform duration-300 group-hover:scale-105 object-cover aspect-[74/93]"
                 images={data[`imageSources_${(i % 12) + 1}`]} // Access correct array with modulo
                 alt={`test ${i + 1}`} 
               />
+              <div className="hoverLayer flex flex-col items-center justify-center absolute w-full h-full z-100 bg-[#00000091] text-[#ffffff] top-0 left-0" >
+                <h2 className="font-cormorant_garamond text-2xl" >JOSHUA & NAYARA</h2>
+                <h3 className="font-montserrat italic ">SANTORINI</h3>
+              </div>
             </Link>
           </div>
         ))}

@@ -26,14 +26,8 @@ const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children }) =
 
   return (
     <AnimatePresence mode="popLayout">
-      <motion.div
-        key={pathname}
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        variants={firstLoadVariants}
-        transition={pageTransition}
-        className="outer-motion-div"
+      <motion.div key={pathname} initial="initial" animate="enter" exit="exit" variants={firstLoadVariants} transition={pageTransition} 
+      className="outer-motion-div bg-[#000000c4]"
       >
         <FrozenRoute>{children}</FrozenRoute>
         <Footer />

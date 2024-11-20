@@ -37,6 +37,16 @@ const Header: React.FC = () => {
             menuText.innerHTML = 'CLOSE';
         } else if (menuText?.innerHTML === 'CLOSE'){
             menuText.innerHTML = 'MENU';
+            menuText.style.color = '';
+        }
+    };
+
+    const handleMenuButtonHover = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, hover: boolean) => {
+        const menuText = document.getElementById('menu-text') as HTMLElement | null;
+        if (menuText?.innerHTML === 'CLOSE') {
+            (event.target as HTMLElement).style.color = hover ? '#ffffff29' : ''; // Red on hover when text is 'CLOSE'
+        } else {
+            (event.target as HTMLElement).style.color = ''; // Reset color when not hovering or text is 'MENU'
         }
     };
 
@@ -55,15 +65,7 @@ const Header: React.FC = () => {
                         </Link>
                     </div>
                     <div className="flex flex-col items-end justify-center pr-10">
-                        <Link 
-                            href="#" 
-                            className="text-white font-cormorant_garamond text-5xl" 
-                            onClick={handleMenuButtonClick} 
-                            id="menu-text"
-                            scroll={false}
-                        >
-                            MENU
-                        </Link>
+                        <Link  href="#" className="text-white font-cormorant_garamond text-5xl" onClick={handleMenuButtonClick}  onMouseOver={(e) => handleMenuButtonHover(e, true)} onMouseOut={(e) => handleMenuButtonHover(e, false)} id="menu-text" scroll={false}>MENU</Link>
                     </div>
                 </div>
             </div>

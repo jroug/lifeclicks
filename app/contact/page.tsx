@@ -50,7 +50,7 @@ export default function ContactForm() {
           <p className="text-green-600">Thank you for your message!</p>
         ) : (
           <form className="contact-us bg-black font-montserrat pl-20 pr-60 pt-20 pb-60" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-16  " >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16  " >
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-1 bg-black text-white">FULL NAME</label>
                   <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="w-full bg-black text-white" required />
@@ -93,11 +93,11 @@ export default function ContactForm() {
                   <label htmlFor="hear" className=" block text-sm font-medium mb-1 bg-black text-white">HOW DID YOU HERE ABOUT US?</label>
                   <input type="text" id="hear" name="hear" value={formData.hear} onChange={handleChange} className="w-full bg-black text-white" required />
                 </div>
-                <div className="col-span-2 max-w-[60%]" >
+                <div className="md:col-span-2 max-w-[60%]" >
                   <label htmlFor="message" className="block text-sm font-medium mb-1 bg-black text-white">MESSAGE</label>
                   <textarea id="message" name="message" value={formData.message} onChange={handleChange} className="w-full bg-black text-white" required ></textarea>
                 </div>
-                <div className="col-span-2 max-w-[60%]" >
+                <div className="md:col-span-2 max-w-[60%]" >
                 <input type="checkbox" id="terms" name="terms"  className="p-5 bg-black text-white" required />
                     <p className="block text-sm font-medium mb-1 bg-black text-white">
                       I consent for the information submitted above to be recorded and
@@ -106,7 +106,7 @@ export default function ContactForm() {
                       agreement to its User Agreement & Privacy Policy
                     </p>
                 </div>
-                <div className="col-span-2 text-left">
+                <div className="md:col-span-2 text-left">
                   <button type="submit" className=" text-white font-semibold rounded-md shadow-sm hover:underline ">SEND</button>
                 </div>
             </div>
