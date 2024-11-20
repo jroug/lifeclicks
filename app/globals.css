@@ -125,11 +125,10 @@ footer{
   z-index: -100;
   top: 0;
   opacity: 0;
-  transition: opacity 0.1s;
+  transition: opacity 0.5s;
 }
 
 .custom-main-menu-wrapper.open{
-  z-index: 9;
   opacity: 1 !important;
 }
 
@@ -173,7 +172,7 @@ form.contact-us input{
 
 .hoverLayer{
   opacity:0;
-  transition: opacity 500ms;
+  transition: opacity 200ms;
 }
 .hoverLayer:hover{
   opacity:1;
@@ -210,4 +209,8 @@ form.contact-us input{
   border-bottom:1px solid black;
   text-align: center;
   font-size: 25px;
+}
+
+.z-index-9{
+  z-index: 9 !important;
 }

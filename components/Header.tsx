@@ -16,6 +16,9 @@ const Header: React.FC = () => {
 
         // Toggle the 'open' class on the menu
         menu?.classList.remove('open');
+        setTimeout(function(){
+            menu?.classList.remove('z-index-9');
+        },200)
 
         if (menuText?.innerHTML === 'CLOSE'){
             menuText.innerHTML = 'MENU';
@@ -30,7 +33,19 @@ const Header: React.FC = () => {
         const menuText = document.getElementById('menu-text') as HTMLElement | null;
 
         // Toggle the 'open' class on the menu
-        menu?.classList.toggle('open');
+        if (  menu?.classList.contains('open') ){
+            menu?.classList.remove('open');
+            setTimeout(function(){
+                menu?.classList.remove('z-index-9');
+            },500)
+        }else{
+            menu?.classList.add('z-index-9');
+            menu?.classList.add('open');
+            
+        }
+       
+        
+       
 
         // Toggle the text between 'MENU' and 'CLOSE'
         if (menuText?.innerHTML === 'MENU') {

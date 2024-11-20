@@ -8,6 +8,9 @@ const MainMenu = () => {
         const menu = document.getElementById('main-menu') as HTMLElement | null;
         const menuText = document.getElementById('menu-text') as HTMLElement | null;
         menu?.classList.remove('open');
+        setTimeout(function(){
+            menu?.classList.remove('z-index-9');
+        },200)
         if (menuText?.innerHTML === 'CLOSE') menuText.innerHTML = 'MENU';
     };
 
