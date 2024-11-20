@@ -158,3 +158,13 @@ footer{
   margin-top: 160px;
   margin-right: 50px;
 }
+
+form.contact-us textarea,
+form.contact-us select,
+form.contact-us input{
+  border-bottom: 1px solid #ffffff;
+}
+
+.custom-contact-us-height{
+  /* min-height: calc(100vh + 110px); */
+}

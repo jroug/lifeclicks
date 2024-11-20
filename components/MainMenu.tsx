@@ -35,7 +35,7 @@ const MainMenu = () => {
                 </div>
             </div>
             <div className="grid grid-cols-2 text-white pl-[70px]">
-                <div className="flex flex-col items-start justify-center h-[50px]"><Link href="#" className="underline text-xs" scroll={false}>Privacy Policy</Link></div>
+                <div className="flex flex-col items-start justify-center h-[50px]"><Link href="#" className="uppercase underline text-sm" scroll={false}>Privacy Policy</Link></div>
                 <div className="flex flex-col items-end justify-center h-[50px] mr-[50px]"><hr className="w-full" /></div>
             </div>
         </div>
