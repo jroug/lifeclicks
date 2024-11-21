@@ -125,21 +125,63 @@ footer{
   z-index: -100;
   top: 0;
   opacity: 0;
-  transition: opacity 0.5s;
+  transition: opacity 0.2s;
 }
 
 .custom-main-menu-wrapper.open{
   opacity: 1 !important;
 }
 
-
+/* menu items effect start*/
 .menu-items li{
+  padding-top: 80px;
+  overflow: hidden;
+}
+.menu-items li a{
   font-family: 'Cormorant Garamond', sans-serif;
   text-transform: uppercase;
   font-size: 56px;
-  line-height: 70px;
-  line-height: 100px;
+  line-height: 40px;
+  display: block;
+  position: relative;
+  bottom: -100px;
+  transition: bottom 0.2s;
 }
+
+.menu-items li:nth-child(1) a{
+  transition-delay: 0.2s;
+}
+.menu-items li:nth-child(2) a{
+  transition-delay: 0.3s;
+}
+.menu-items li:nth-child(3) a{
+  transition-delay: 0.4s;
+}
+.menu-items li:nth-child(4) a{
+  transition-delay: 0.5s;
+}
+
+.menu-social-item-wrapper{
+  overflow: hidden;
+}
+.menu-social-item-wrapper a{
+  position: relative;
+  bottom: -100px;
+  transition: bottom 0.2s;
+  transition-delay: 0.1s;
+}
+
+ 
+
+.custom-main-menu-wrapper.open .menu-social-item-wrapper a,
+.custom-main-menu-wrapper.open .menu-items li a{
+  bottom: 0px;
+}
+
+
+/* menu items effect end*/
+
+
 
 .social-in-menu{
   margin-right: -145px;

@@ -35,11 +35,17 @@ const MainMenu = () => {
                 </div>
                 <div className="flex flex-col items-end justify-center h-custom">
                     <p className="social-in-menu pb-4 border-custom rotate-90- social-links-menu">
-                        <Link href="#" className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>instagram</Link> 
+                        <span className="menu-social-item-wrapper" >
+                            <Link href="#" className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>instagram</Link> 
+                        </span>
                         <span className="menu-element p-4" >|</span>
-                        <Link href="#" className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>vimeo</Link> 
+                        <span className="menu-social-item-wrapper" >
+                            <Link href="#" className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>vimeo</Link> 
+                        </span>
                         <span className="menu-element p-4" >|</span>
-                        <Link href="#" className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>facebook</Link>
+                        <span className="menu-social-item-wrapper" >
+                            <Link href="#" className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>facebook</Link>
+                        </span>
                     </p>
                 </div>
             </div>
