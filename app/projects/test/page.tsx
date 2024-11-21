@@ -71,7 +71,7 @@ export default function TestProject() {
                 <SwiperSlide key={"11"} className="block w-auto-important">
                     <div className="h-full w-auto">
                         <Image
-                            className="h-full w-auto md:pl-28 md:py-24"
+                            className="h-full w-auto md:pl-14 md:py-14"
                             src={`/images/atest1.jpg`}
                             alt={`Image`}
                             width={1920}
@@ -82,7 +82,7 @@ export default function TestProject() {
                 <SwiperSlide key={"444"} className="block w-auto-important">
                     <div className="h-full w-auto">
                         <Image
-                            className="h-full w-auto md:pl-28 md:py-24"
+                            className="h-full w-auto md:pl-14 md:py-14"
                             src={`/images/atest4.jpg`}
                             alt={`Image`}
                             width={1080}
@@ -93,7 +93,7 @@ export default function TestProject() {
                 <SwiperSlide key={"222"} className="block w-auto-important">
                     <div className="h-full w-auto">
                         <Image
-                            className="h-full w-auto md:pl-28 md:py-24"
+                            className="h-full w-auto md:pl-14 md:py-14"
                             src={`/images/atest2.jpg`}
                             alt={`Image`}
                             width={1080}
@@ -104,7 +104,7 @@ export default function TestProject() {
                 <SwiperSlide key={"000"} className="block w-auto-important">
                     <div className="h-full w-auto">
                         <Image
-                            className="h-full w-auto md:pl-28 md:py-24"
+                            className="h-full w-auto md:pl-14 md:py-14"
                             src={`/images/atest0.jpg`}
                             alt={`Image`}
                             width={1080}

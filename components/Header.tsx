@@ -74,13 +74,13 @@ const Header: React.FC = () => {
                             <Image 
                                 src="/images/logo/logo.svg" 
                                 alt="Logo" 
-                                width={195} // Adjust the width as needed
-                                height={50} // Adjust the height as needed
+                                width={120} // Adjust the width as needed
+                                height={30} // Adjust the height as needed
                             />
                         </Link>
                     </div>
                     <div className="flex flex-col items-end justify-center pr-10">
-                        <Link  href="#" className="text-white font-cormorant_garamond text-5xl" onClick={handleMenuButtonClick}  onMouseOver={(e) => handleMenuButtonHover(e, true)} onMouseOut={(e) => handleMenuButtonHover(e, false)} id="menu-text" scroll={false}>MENU</Link>
+                        <Link  href="#" className="text-white font-cormorant_garamond text-3xl" onClick={handleMenuButtonClick}  onMouseOver={(e) => handleMenuButtonHover(e, true)} onMouseOut={(e) => handleMenuButtonHover(e, false)} id="menu-text" scroll={false}>MENU</Link>
                     </div>
                 </div>
             </div>

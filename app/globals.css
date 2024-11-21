@@ -69,25 +69,25 @@ header{
 
 /* they need to be the same */
 header .grid div{
-  height: 110px;
+  height: 75px;
 }
 /* .main-wrapper{
   margin-top: 110px;
 } */
 .custom-padding-top{
-  padding-top: 110px;
+  padding-top: 75px;
 }
 .custom-padding-bottom{
-  padding-bottom: 110px;
+  padding-bottom: 75px;
 }
 .custom-margin-top-minus{
-  margin-top: -110px;
+  margin-top: -75px;
 }
 /* ************************ */
 
 
 .custom-slider-height{
-    height: calc(100vh - 300px);
+    height: calc(100vh - 75px);
 }
 
 footer{
@@ -136,14 +136,14 @@ footer{
 .menu-items li{
   font-family: 'Cormorant Garamond', sans-serif;
   text-transform: uppercase;
-  font-size: 80px;
-  font-weight: 300;
+  font-size: 56px;
+  line-height: 70px;
   line-height: 100px;
 }
 
 .social-in-menu{
-  margin-right: -170px;
-  font-size: 25px;
+  margin-right: -145px;
+  font-size: 21px;
 }
 
 .h-custom{
@@ -181,7 +181,7 @@ form.contact-us input{
 #menu-text,
 .menu-element{
   transition: color 350ms;
-  color:#ffffff;
+  color:#e5e5e5;
 }
 
 .hovered-menu-items .menu-element{
@@ -189,7 +189,7 @@ form.contact-us input{
 }
 
 .hovered-menu-items .menu-element:hover{
-  color:#ffffff;
+  color:#e5e5e5;
 }
 
 .swiper {
@@ -214,3 +214,35 @@ form.contact-us input{
 .z-index-9{
   z-index: 9 !important;
 }
+
+.text-footer{
+  font-size: 0.9rem;
+  line-height: 1.35rem;
+}
+
+.underline-effect a {
+  color: #000000;
+}
+
+.underline-effect a:hover {
+  color: #000000;
+}
+
+.underline-effect a {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+  background-size: 100% 0.1em, 0 0.1em;
+  background-position: 100% 0, 100% 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+.underline-effect a:hover, .underline-effect a:focus {
+  background-size: 0 0.1em, 100% 0.1em;
+  background-position: 100% 100%, 0 100%;
+}
+
+.footer-hr{
+  border-color: #e5e5e5 !important;
+}
+
+ 

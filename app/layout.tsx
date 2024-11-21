@@ -6,8 +6,8 @@ import MainMenu from "@/components/MainMenu";
 
  
 export const metadata: Metadata = {
-  title: "crafting love stories",
-  description: "crafting love stories",
+  title: "Crafting Cinematic Love Stories",
+  description: "Crafting Cinematic Love Stories",
 };
 
 export default function RootLayout({
