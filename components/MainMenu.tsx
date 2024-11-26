@@ -38,11 +38,15 @@ const MainMenu = () => {
                         <span className="menu-social-item-wrapper" >
                             <Link href="#" className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>instagram</Link> 
                         </span>
-                        <span className="menu-element p-4" >|</span>
+                        <span className="menu-social-item-wrapper" >
+                            <span className="menu-element p-4" >|</span>
+                        </span>
                         <span className="menu-social-item-wrapper" >
                             <Link href="#" className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>vimeo</Link> 
                         </span>
-                        <span className="menu-element p-4" >|</span>
+                        <span className="menu-social-item-wrapper" >
+                            <span className="menu-element p-4" >|</span>
+                        </span>
                         <span className="menu-social-item-wrapper" >
                             <Link href="#" className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>facebook</Link>
                         </span>
@@ -50,8 +54,12 @@ const MainMenu = () => {
                 </div>
             </div>
             <div className="grid grid-cols-2 text-white pl-[38px]">
-                <div className="flex flex-col items-start justify-center h-[50px]"><Link href="#" className="menu-element uppercase underline text-sm" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>Privacy Policy</Link></div>
-                <div className="flex flex-col items-end justify-center h-[50px] mr-[40px]"><hr className="w-full footer-hr" /></div>
+                <div className="flex flex-col items-start justify-center h-[50px]">
+                    <span className="menu-privacy-item-wrapper" >
+                        <Link href="#" className="menu-element uppercase text-sm" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>Privacy Policy</Link>
+                    </span>
+                </div>
+                <div className="flex flex-col items-end justify-center h-[50px] mr-[40px]"><hr className="menu-bottom-line mt-[5px]" /></div>
             </div>
         </div>
     );

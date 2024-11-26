@@ -46,15 +46,15 @@ export default function TestProject() {
                 <SwiperSlide key={"021201212"} className="">
                     <div className="flex h-full relative bg-white">
                         <div className="absolute md:relative z-10 bg-white flex flex-col items-center justify-center h-full w-full md:w-half-important">
-                            <span className="font-montserrat uppercase w-full text-md text-black text-center">
+                            <span className="font-montserrat uppercase w-full text-2xl  text-black text-center">
                                 Wedding
+                            </span>
+                            <span className="font-montserrat uppercase w-full text-sm text-black text-center santorini-subtitle">
+                                Santorini
                             </span>
                             <h1 className="font-cormorant_garamond uppercase w-full text-6xl text-black text-center">
                                 Joshua & Nayara
                             </h1>
-                            <span className="font-montserrat uppercase w-full text-xl text-black text-center santorini-subtitle">
-                                Santorini
-                            </span>
                         </div>
                         <div className="flex flex-col h-full relative w-full md:w-half-important">
                             <Image
@@ -118,7 +118,7 @@ export default function TestProject() {
                 >
                     <div className="w-full h-full relative">
                         <h2 className="flex items-center justify-center h-full text-6xl text-black">
-                            <Link href="/projects/test" className="font-montserrat">
+                            <Link href="/projects/test" className="next-project font-montserrat uppercase  ">
                                 next project
                             </Link>
                         </h2>
@@ -128,7 +128,7 @@ export default function TestProject() {
             {/* <div className="text-black font-montserrat text-lg mb-4">
                 Slide {currentSlide} of {totalSlides}
             </div> */}
-            <div className="sliderCounter absolute bottom-0 left-0 z-[100] text-black font-montserrat text-lg m-4 w-[35px]">
+            <div className="sliderCounter absolute bottom-0 left-0 z-[100] text-black font-montserrat text-lg m-4 w-[35px] hidden md:block">
                 {formatNumber(currentSlide)}
             </div>
         </main>

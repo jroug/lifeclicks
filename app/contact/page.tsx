@@ -1,6 +1,21 @@
 'use client';
 
 import { useState, ChangeEvent, FormEvent } from 'react';
+import { TextField, MenuItem } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+ 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#515151', // Green as the primary color
+    },
+  },
+});
+
 
 interface FormData {
   name: string;
@@ -46,71 +61,80 @@ export default function ContactForm() {
       <div className="mx-auto my-[100px] w-full max-w-6xl">
         <h1 className="text-3xl font-bold text-left mb-10 text-[80px] font-cormorant_garamond uppercase font-light">Contact Us</h1>
         <p className="uppercase font-montserrat x-6 pt-5 pb-16 max-w-[500px] text-sm">Ready to capture your story with LifeClicks? Share your details below, and our team will be in touch within 24 hours with a personalized overview of our photography services. Let’s bring your moments to life.</p>
+      
+ 
+
         {submitted ? (
           <p className="text-green-600">Thank you for your message!</p>
         ) : (
-          <form className="contact-us bg-black font-montserrat pl-20 pr-60 pt-20 pb-60" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16  " >
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1 bg-black text-white">FULL NAME</label>
-                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="w-full bg-black text-white" required />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-1 bg-black text-white">EMAIL</label>
-                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="w-full bg-black text-white" required />
-                </div>
-                <div>
-                  <label htmlFor="location" className="block text-sm font-medium mb-1 bg-black text-white">WHERE DO YOU LIVE?</label>
-                  <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} className="w-full bg-black text-white" required />
-                </div>
-                <div>
-                  <label htmlFor="eventType" className="block text-sm font-medium mb-1 bg-black text-white">EVENT TYPE</label>
-                  <select id="eventType" name="eventType" value={formData.eventType} onChange={handleChange} className="w-full bg-black text-white" required>
-                    <option value="" disabled></option>
-                    <option value="wedding">Wedding</option>
-                    <option value="birthday">Birthday</option>
-                    <option value="corporate">Corporate Event</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="role" className="block text-sm font-medium mb-1 bg-black text-white">WHAT IS YOUR ROLE?</label>
-                  <input type="text" id="role" name="role" value={formData.role} onChange={handleChange} className="w-full bg-black text-white" required />
-                </div>
-                <div>
-                  <label htmlFor="date" className="block text-sm font-medium mb-1 bg-black text-white">DATE</label>
-                  <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} className="w-full bg-black text-white" required />
-                </div>
-                <div>
-                  <label htmlFor="eventLocation" className="block text-sm font-medium mb-1 bg-black text-white">EVENT LOCATION</label>
-                  <input type="text" id="eventLocation" name="eventLocation" value={formData.eventLocation} onChange={handleChange} className="w-full bg-black text-white" required />
-                </div>
-                <div>
-                  <label htmlFor="budget" className="block text-sm font-medium mb-1 bg-black text-white">BUDGET</label>
-                  <input type="number" id="budget" name="budget" value={formData.budget} onChange={handleChange} className="w-full bg-black text-white" required />
-                </div>
-                <div>
-                  <label htmlFor="hear" className=" block text-sm font-medium mb-1 bg-black text-white">HOW DID YOU HERE ABOUT US?</label>
-                  <input type="text" id="hear" name="hear" value={formData.hear} onChange={handleChange} className="w-full bg-black text-white" required />
-                </div>
-                <div className="md:col-span-2 max-w-[60%]" >
-                  <label htmlFor="message" className="block text-sm font-medium mb-1 bg-black text-white">MESSAGE</label>
-                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} className="w-full bg-black text-white" required ></textarea>
-                </div>
-                <div className="md:col-span-2 max-w-[60%]" >
-                <input type="checkbox" id="terms" name="terms"  className="p-5 bg-black text-white" required />
-                    <p className="block text-sm font-medium mb-1 bg-black text-white">
-                      I consent for the information submitted above to be recorded and
-                      stored for the purposes of providing services relating to my inquiry. I
-                      agree that registration on or use of the Bottega 53 site constitutes
-                      agreement to its User Agreement & Privacy Policy
-                    </p>
-                </div>
-                <div className="md:col-span-2 text-left">
-                  <button type="submit" className=" text-white font-semibold rounded-md shadow-sm hover:underline ">SEND</button>
-                </div>
-            </div>
-          </form>
+          <ThemeProvider theme={theme}>
+            <form className="contact-us bg-black font-montserrat pl-20 pr-60 pt-20 pb-60" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16  " >
+                  
+      
+                  <div>
+                    <TextField label="Full Name" name="name" value={formData.name} onChange={handleChange} variant="standard" fullWidth required autoComplete="off" />
+                  </div>
+                  <div>
+                    <TextField label="Email" name="email" type="email" value={formData.email} onChange={handleChange} variant="standard" fullWidth required autoComplete="off" />
+                  </div>
+                  <div>
+                    <TextField label="Where Do You Live?" name="location" value={formData.location} onChange={handleChange} variant="standard" fullWidth required autoComplete="off" />
+                  </div>
+                  <div>
+                    <TextField select label="Event Type" name="eventType" value={formData.eventType} onChange={handleChange} variant="standard" fullWidth required  >
+                      <MenuItem value="wedding">Wedding</MenuItem>
+                      <MenuItem value="birthday">Birthday</MenuItem>
+                      <MenuItem value="corporate">Corporate Event</MenuItem>
+                      <MenuItem value="other">Other</MenuItem>
+                    </TextField>
+                  </div>
+                  <div>
+                    <TextField label="What Is Your Role?" name="role" value={formData.role} onChange={handleChange} variant="standard" fullWidth required autoComplete="off" />
+                  </div>
+                  {/* <div>
+                    <TextField label="Date" name="date" value={formData.date} onChange={handleChange} variant="standard" fullWidth required />
+                  </div> */}
+                  <div className="date-wrap">
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DemoContainer components={['DatePicker']}>
+                        <DatePicker label="Date" />
+                      </DemoContainer>
+                    </LocalizationProvider>
+                  </div>
+ 
+
+                  <div>
+                    <TextField label="Event Location" name="eventLocation" value={formData.eventLocation} onChange={handleChange} variant="standard" fullWidth required autoComplete="off" />
+                  </div>
+                  <div>
+                  <TextField select label="Budget" name="budget" value={formData.budget} onChange={handleChange} variant="standard" fullWidth required >
+                      <MenuItem value="3-5">3000€ - 5000€</MenuItem>
+                      <MenuItem value="5-10">5000€ - 10000€</MenuItem>
+                      <MenuItem value="10+">10000€ + </MenuItem>
+                    </TextField>
+                  </div>
+                  <div>
+                    <TextField label="How Did You Hear About Us?" name="hear" value={formData.hear} onChange={handleChange} variant="standard" fullWidth required autoComplete="off" />
+                  </div>
+                  <div className="md:col-span-2 max-w-[60%]" >
+                    <TextField label="Message" name="message" value={formData.message} onChange={handleChange} variant="standard" multiline rows={4} fullWidth required autoComplete="off" />
+                  </div>  
+                  <div className="md:col-span-2 max-w-[60%]" >
+                      <input type="checkbox" id="terms" name="terms"  className="p-5 bg-black text-white form-checkbox" required />
+                      <p className="block text-sm font-medium mb-1 bg-black text-white uppercase pl-[30px]">
+                        I consent for the information submitted above to be recorded and
+                        stored for the purposes of providing services relating to my inquiry. I
+                        agree that registration on or use of the Bottega 53 site constitutes
+                        agreement to its User Agreement & Privacy Policy
+                      </p>
+                  </div>
+                  <div className="md:col-span-2 text-left">
+                    <button type="submit" className=" text-white font-semibold rounded-md shadow-sm hover:underline ">SEND</button>
+                  </div>
+              </div>
+            </form>
+          </ThemeProvider>
         )}
       </div>
     </main>

@@ -12,7 +12,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
- 
+    --reveal-menu-items-time: 0.5s; /* Define the variable for menu effects */
   }
 }
 
@@ -125,7 +125,7 @@ footer{
   z-index: -100;
   top: 0;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.1s; /* transition for main menu background show hiode effect */
 }
 
 .custom-main-menu-wrapper.open{
@@ -145,30 +145,54 @@ footer{
   display: block;
   position: relative;
   bottom: -100px;
-  transition: bottom 0.2s;
+  transition: bottom var(--reveal-menu-items-time) cubic-bezier(0.25, 0.8, 0.25, 1); /* effect for reveal from bottom menu atims about contact klp */
 }
 
+
+/* delay timings for menu items contact about klp*/
 .menu-items li:nth-child(1) a{
-  transition-delay: 0.2s;
+  transition-delay: 0.05s;
 }
 .menu-items li:nth-child(2) a{
-  transition-delay: 0.3s;
+  transition-delay: 0.1s;
 }
 .menu-items li:nth-child(3) a{
-  transition-delay: 0.4s;
+  transition-delay: 0.15s;
 }
 .menu-items li:nth-child(4) a{
-  transition-delay: 0.5s;
+  transition-delay: 0.20s;
 }
 
 .menu-social-item-wrapper{
   overflow: hidden;
 }
+
+.menu-social-item-wrapper span,
 .menu-social-item-wrapper a{
-  position: relative;
   bottom: -100px;
-  transition: bottom 0.2s;
-  transition-delay: 0.1s;
+}
+
+#main-menu.open .menu-social-item-wrapper span,
+#main-menu.open .menu-social-item-wrapper a{
+  position: relative;
+  bottom: 0px;
+  transition: bottom var(--reveal-menu-items-time) cubic-bezier(0.25, 0.8, 0.25, 1); /* reveal effect for social media on the right */ 
+}
+
+#main-menu.open .menu-social-item-wrapper:nth-child(5) a{
+  transition-delay: 0.5s;
+}
+#main-menu.open .menu-social-item-wrapper:nth-child(4) span{
+  transition-delay: 0.55s;
+}
+#main-menu.open .menu-social-item-wrapper:nth-child(3) a{
+  transition-delay: 0.6s;
+}
+#main-menu.open .menu-social-item-wrapper:nth-child(2) span{
+  transition-delay: 0.65s;
+}
+#main-menu.open .menu-social-item-wrapper:nth-child(1) a{
+  transition-delay: 0.7s;
 }
 
  
@@ -179,7 +203,53 @@ footer{
 }
 
 
-/* menu items effect end*/
+.menu-privacy-item-wrapper{
+  overflow: hidden;
+}
+.menu-privacy-item-wrapper a{
+  bottom: -100px;
+  border-bottom:1px solid #ffffff;
+  padding-bottom:3px;
+}
+
+#main-menu.open .menu-privacy-item-wrapper a{
+  position: relative;
+  transition: bottom var(--reveal-menu-items-time) cubic-bezier(0.25, 0.8, 0.25, 1); /* reveal effect for social media on the right */ 
+  transition-delay: 0.8s;
+  bottom: 5px;
+}
+
+.menu-bottom-line{
+  width:0%;
+  border-color: #e5e5e5 !important;
+}
+
+#main-menu.open .menu-bottom-line{
+  width:100%;
+  transition: width 800ms;
+  transition-delay: 0.2s;
+}
+
+
+
+/* reveal effect on page load for logo and menu button-link */
+.hidden-reveal-item-wrapper{
+  position: relative;
+  overflow: hidden;
+}
+.hidden-reveal-item{
+  display: block;
+  transform: translateY(105%);
+  transition: transform 800ms !important;
+  transition-delay: 100ms;
+}
+.show-items .hidden-reveal-item{
+  transform: translateY(0%);
+}
+
+
+
+
 
 
 
@@ -200,17 +270,70 @@ footer{
   margin-right: 50px;
 }
 
-form.contact-us textarea,
+form.contact-us .MuiSelect-select,
 form.contact-us select,
 form.contact-us input{
-  border-bottom: 1px solid #ffffff;
+  color:#ffffff;
 }
 
+form.contact-us textarea{
+  color:#ffffff;
+}
+
+
+ 
+form.contact-us .date-wrap input{
+  padding: 10px 0px !important;
+}
+
+
+form.contact-us .date-wrap label {
+  transform: translate(0px, 14px) scale(1);
+}
+form.contact-us .date-wrap label.Mui-focused {
+    transform: translate(0px, -9px) scale(0.75);
+}
+form.contact-us .date-wrap label.MuiFormLabel-filled{
+  transform: translate(0px, -9px) scale(0.75);
+}
+
+form.contact-us .date-wrap .MuiOutlinedInput-notchedOutline{
+  border-bottom: 2px solid #ffffff;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-radius: 0px;
+}
+
+form.contact-us .MuiInput-underline{
+  border-bottom: 2px solid #ffffff;
+}
+
+form.contact-us .Mui-focused.MuiInput-underline{
+  border-bottom: 0px !important;
+}
+
+form.contact-us label{
+  color: #fff;
+  text-transform: uppercase;
+}
+
+
+form.contact-us .MuiSvgIcon-root{
+  color:#ffffff;
+}
 .custom-contact-us-height{
   /* min-height: calc(100vh + 110px); */
 }
 
+form .form-checkbox{
+  float:left;
+  margin-top:3px;
+}
 
+form .MuiFormControl-root{
+  width:100%;
+}
 
 .hoverLayer{
   opacity:0;
@@ -228,6 +351,7 @@ form.contact-us input{
 
 .hovered-menu-items .menu-element{
   color:#ffffff29;
+  transition: color 350ms ease 0s !important;
 }
 
 .hovered-menu-items .menu-element:hover{
@@ -244,7 +368,8 @@ form.contact-us input{
 }
 
 .santorini-subtitle{
-  transform: translateY(150px);
+  margin-top:5px;
+  margin-bottom:30px;
 }
 
 .sliderCounter{
@@ -264,6 +389,7 @@ form.contact-us input{
 
 .underline-effect a {
   color: #000000;
+  padding-bottom:3px;
 }
 
 .underline-effect a:hover {
@@ -282,9 +408,11 @@ form.contact-us input{
   background-size: 0 0.1em, 100% 0.1em;
   background-position: 100% 100%, 0 100%;
 }
-
-.footer-hr{
-  border-color: #e5e5e5 !important;
-}
-
  
+ 
+.next-project{
+  color:#515151;
+}
+.next-project:hover{
+  color:#000000;
+}
