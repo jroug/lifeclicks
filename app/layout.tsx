@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   description: "Crafting Cinematic Love Stories",
 };
 
+
+
 export default function RootLayout({
   children,
 }: Readonly<{

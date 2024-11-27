@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import FrozenRoute from './FrozenRoute'
 import Footer from './Footer'
 
+
 interface PageAnimatePresenceProps {
   children: ReactNode
 }
@@ -14,11 +15,13 @@ interface PageAnimatePresenceProps {
 const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children }) => {
   const pathname = usePathname()
 
-  const firstLoadVariants = {
-    initial: { opacity: 0 },
-    enter: { opacity: 1 },
-    exit: { opacity: 0, x: -200 },
-  }
+
+  const generalVariants =  {
+      initial: { opacity: 0 },
+      enter: { opacity: 1 },
+      exit: { opacity: 0 },
+  };
+  
   const pageTransition = {
     duration: 0.8,
     ease: "easeInOut",
@@ -26,11 +29,11 @@ const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children }) =
 
   return (
     <AnimatePresence mode="popLayout">
-      <motion.div key={pathname} initial="initial" animate="enter" exit="exit" variants={firstLoadVariants} transition={pageTransition} 
-      className="outer-motion-div bg-[#000000c4]"
-      >
-        <FrozenRoute>{children}</FrozenRoute>
-        <Footer />
+        <motion.div key={pathname} initial="initial" animate="enter" exit="exit" variants={generalVariants} transition={pageTransition} 
+        className="outer-motion-div "
+        >
+          <FrozenRoute>{children}</FrozenRoute>
+          <Footer />
       </motion.div>
     </AnimatePresence>
   )

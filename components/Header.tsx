@@ -82,8 +82,8 @@ const Header: React.FC = () => {
     };
 
     useEffect(() => {
-
         document.getElementById('main-header')?.classList.add('show-items');
+        localStorage.setItem("FIRST", "true");
     })
     
 
