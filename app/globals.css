@@ -54,11 +54,7 @@ body {
   width: auto !important;
 }
 
-@screen md {
-  .md\:w-half-important {
-    width: 50% !important;
-  }
-}
+
 
 header{
   background-color: #000000;
@@ -91,7 +87,6 @@ header .grid div{
 }
 
 footer{
-  background-color: #F5F5F5;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -415,4 +410,32 @@ form .MuiFormControl-root{
 }
 .next-project:hover{
   color:#000000;
+}
+
+
+/* responsive */
+@media only screen and (max-width: 900px) {
+  #about-main #about-info-wrap{
+    flex-direction: column !important;
+  }
+  #about-main .about-logo{
+    max-width:300px;
+  }
+}
+
+
+@media only screen and (max-width: 500px) {
+  .menu-items li{
+    padding-top:50px;
+  }
+  .menu-items li a{
+    font-size: 35px;
+  }
+}
+
+@screen md {
+  .md\:w-half-important {
+    width: 50% !important;
+  }
+ 
 }

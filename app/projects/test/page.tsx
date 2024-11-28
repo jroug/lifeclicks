@@ -59,8 +59,8 @@ export default function TestProject() {
                     }}
                 >
                     <SwiperSlide key={"021201212"} className="">
-                        <div className="flex h-full relative bg-white">
-                            <div className="absolute md:relative z-10 bg-white flex flex-col items-center justify-center h-full w-full md:w-half-important">
+                        <div className="flex h-full relative bg-araxnowhite flex-col md:flex-row">
+                            <div className="absolute md:relative z-10  bg-araxnowhite flex flex-col items-center justify-center h-full w-full md:w-half-important">
                                 <span className="font-montserrat uppercase w-full text-2xl  text-black text-center">
                                     Wedding
                                 </span>
@@ -86,7 +86,7 @@ export default function TestProject() {
                     <SwiperSlide key={"11"} className="block w-auto-important">
                         <div className="h-full w-auto">
                             <Image
-                                className="h-full w-auto md:pl-14 md:py-14"
+                                className="h-full w-auto md:pl-14 pt-2 md:py-14 mx-auto"
                                 src={`/images/atest1.jpg`}
                                 alt={`Image`}
                                 width={1920}
@@ -97,7 +97,7 @@ export default function TestProject() {
                     <SwiperSlide key={"444"} className="block w-auto-important">
                         <div className="h-full w-auto">
                             <Image
-                                className="h-full w-auto md:pl-14 md:py-14"
+                                className="h-full w-auto md:pl-14 pt-2 md:py-14 mx-auto"
                                 src={`/images/atest4.jpg`}
                                 alt={`Image`}
                                 width={1080}
@@ -108,7 +108,7 @@ export default function TestProject() {
                     <SwiperSlide key={"222"} className="block w-auto-important">
                         <div className="h-full w-auto">
                             <Image
-                                className="h-full w-auto md:pl-14 md:py-14"
+                                className="h-full w-auto md:pl-14 pt-2 md:py-14 mx-auto"
                                 src={`/images/atest2.jpg`}
                                 alt={`Image`}
                                 width={1080}
@@ -119,7 +119,7 @@ export default function TestProject() {
                     <SwiperSlide key={"000"} className="block w-auto-important">
                         <div className="h-full w-auto">
                             <Image
-                                className="h-full w-auto md:pl-14 md:py-14"
+                                className="h-full w-auto md:pl-14 pt-2 md:py-14 mx-auto"
                                 src={`/images/atest0.jpg`}
                                 alt={`Image`}
                                 width={1080}
@@ -129,7 +129,7 @@ export default function TestProject() {
                     </SwiperSlide>
                     <SwiperSlide
                         key={"1000"}
-                        className="flex justify-center items-center h-full w-half-important"
+                        className="flex justify-center items-center h-full md:w-half-important"
                     >
                         <div className="w-full h-full relative">
                             <h2 className="flex items-center justify-center h-full text-6xl text-black">

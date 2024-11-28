@@ -19,6 +19,7 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         araxnowhite: "rgb(255 255 255 / 15%)",
+        whitef5: "#F5F5F5",
       },
       screens: {
         '3xl': '1920px',

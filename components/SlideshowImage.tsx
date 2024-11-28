@@ -35,8 +35,8 @@ export default function SlideshowImage({ images, alt, classes }: SlideshowImageP
           className={classes}
       />
       <div className="hoverLayer flex flex-col items-center justify-center absolute w-full h-full z-100 bg-[#00000091] text-[#ffffff] top-0 left-0" >
-        <h2 className="font-cormorant_garamond text-2xl" >JOSHUA & NAYARA</h2>
-        <h3 className="font-montserrat italic ">SANTORINI</h3>
+        <h2 className="font-cormorant_garamond text-xl md:text-2xl " >JOSHUA & NAYARA</h2>
+        <h3 className="font-montserrat italic text-xs md:text-sm">SANTORINI</h3>
       </div>
   </Link>
 
