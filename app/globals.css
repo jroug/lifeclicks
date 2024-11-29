@@ -333,6 +333,7 @@ form .MuiFormControl-root{
 .hoverLayer{
   opacity:0;
   transition: opacity 200ms;
+  z-index:1000;
 }
 .hoverLayer:hover{
   opacity:1;

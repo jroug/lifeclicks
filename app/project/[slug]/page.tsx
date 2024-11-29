@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { logDev } from "@/utils/logDev";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -16,8 +17,14 @@ import { FreeMode, Pagination, Mousewheel } from "swiper/modules";
 import { motion } from 'framer-motion';
 
 
+interface ProjectProps {
+    params: {
+        slug: string;
+    };
+}
 
-export default function TestProject() {
+const Project: React.FC<ProjectProps> = ({ params }) => {
+
     const [currentSlide, setCurrentSlide] = useState(1);
     // const [totalSlides, setTotalSlides] = useState(0);
     
@@ -150,3 +157,5 @@ export default function TestProject() {
         </motion.div>
     );
 }
+
+export default Project;

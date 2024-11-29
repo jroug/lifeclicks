@@ -1,44 +1,84 @@
-'use client'
- import { useState, useRef } from 'react';
- import Link from "next/link";
+'use client';
 
-interface SlideshowImageProps {
-  images: string[];
-  alt: string;
-  classes: string;
+import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/effect-fade';
+import { useRef } from 'react';
+
+interface MediaSource {
+  fullFileUrl: string;
+  postExcerpt: string;
+  postMimeType: string;
 }
 
-export default function SlideshowImage({ images, alt, classes }: SlideshowImageProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+interface SlideshowImageProps {
+  mediaSources: MediaSource[];
+  title: string;
+  place: string;
+  uri: string;
+}
 
-  const startSlideshow = () => {
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-      // console.log('setInterval');
-    }, 1000); // Change image every 2 seconds
+export default function SlideshowImage({ mediaSources, title, place, uri }: SlideshowImageProps) {
+  const swiperRef = useRef<any>(null);
+
+  const handleMouseEnter = () => {
+    console.log('handleMouseEnter');
+    if (swiperRef.current) {
+      swiperRef.current.params.autoplay.delay = 500;
+      swiperRef.current.autoplay.start();
+    }
   };
 
-  const stopSlideshow = () => {
-    if (intervalRef.current) {
-      // console.log('clearInterval');
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
+  const handleMouseLeave = () => {
+    console.log('handleMouseLeave');
+    if (swiperRef.current) {
+      swiperRef.current.autoplay.stop();
     }
   };
 
   return (
-    <Link href={`/projects/test`} className="w-full h-full relative" scroll={false} onMouseEnter={startSlideshow} onMouseLeave={stopSlideshow} >
-      <img
-          src={images[currentIndex]}
-          alt={alt}
-          className={classes}
-      />
-      <div className="hoverLayer flex flex-col items-center justify-center absolute w-full h-full z-100 bg-[#00000091] text-[#ffffff] top-0 left-0" >
-        <h2 className="font-cormorant_garamond text-xl md:text-2xl " >JOSHUA & NAYARA</h2>
-        <h3 className="font-montserrat italic text-xs md:text-sm">SANTORINI</h3>
-      </div>
-  </Link>
+    <Link href={uri} className="w-full h-full relative group" scroll={false}>
+      <Swiper
+        modules={[Autoplay, EffectFade]}
+        slidesPerView={1}
+        effect="fade"
+        loop={true}
+        className="w-full h-full"
+        onSwiper={(swiper) => (swiperRef.current = swiper)} // Capture the Swiper instance
+      >
+        {mediaSources.map((media, index) => (
+          <SwiperSlide key={"slide-" + index}>
+            {media.postMimeType.startsWith('video') ? (
+              <video
+                src={media.postExcerpt} // Video source sent to postExcerpt due to bug in GraphQL field
+                className="w-full h-full object-cover aspect-[74/93]"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            ) : (
+              <img
+                src={media.fullFileUrl}
+                alt={title}
+                className="w-full h-full object-cover aspect-[74/93]"
+              />
+            )}
 
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <div
+        className="hoverLayer flex flex-col items-center justify-center absolute w-full h-full z-100 bg-[#00000091] text-[#ffffff] top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <h2 className="font-cormorant_garamond text-xl md:text-2xl uppercase">{title}</h2>
+        <h3 className="font-montserrat italic text-xs md:text-sm uppercase">{place}</h3>
+      </div>
+    </Link>
   );
 }

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import PageAnimatePresence from '../components/PageAnimatePresence'
+import PageAnimatePresence from '@/context/PageAnimatePresence'
 import Header from "@/components/Header";
 import MainMenu from "@/components/MainMenu";
+import { ApolloProvider } from '@apollo/client';
+import client from '@/lib/apollo-client';
 
- 
+
 export const metadata: Metadata = {
   title: "Crafting Cinematic Love Stories",
   description: "Crafting Cinematic Love Stories",
@@ -28,11 +30,15 @@ export default function RootLayout({
           <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
       </head>
       <body
-        className={`antialiased custom-padding-top`}
+        className={`antialiased custom-padding-top bg-black`}
       >
-        <Header />
-        <MainMenu />
-        <PageAnimatePresence>{children}</PageAnimatePresence>
+        
+          <Header />
+          <MainMenu />
+          <PageAnimatePresence>
+             {children} 
+          </PageAnimatePresence>
+        
       </body>
     </html>
   );

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import FrozenRoute from './FrozenRoute'
-import Footer from './Footer'
+import Footer from '@/components/Footer'
 
 
 interface PageAnimatePresenceProps {
