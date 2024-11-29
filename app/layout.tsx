@@ -3,8 +3,6 @@ import "./globals.css";
 import PageAnimatePresence from '@/context/PageAnimatePresence'
 import Header from "@/components/Header";
 import MainMenu from "@/components/MainMenu";
-import { ApolloProvider } from '@apollo/client';
-import client from '@/lib/apollo-client';
 
 
 export const metadata: Metadata = {

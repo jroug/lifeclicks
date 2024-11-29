@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 import { useRef } from 'react';
+import type { Swiper as SwiperInstance } from 'swiper';
 
 interface MediaSource {
   fullFileUrl: string;
@@ -22,21 +23,19 @@ interface SlideshowImageProps {
 }
 
 export default function SlideshowImage({ mediaSources, title, place, uri }: SlideshowImageProps) {
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperInstance | null>(null);
 
   const handleMouseEnter = () => {
     console.log('handleMouseEnter');
-    if (swiperRef.current) {
-      swiperRef.current.params.autoplay.delay = 500;
-      swiperRef.current.autoplay.start();
+    if (swiperRef.current && swiperRef.current.params.autoplay && typeof swiperRef.current.params.autoplay !== 'boolean') {
+      swiperRef.current.params.autoplay.delay = 500; // Safely access the delay property
+      swiperRef.current.autoplay?.start(); // Start autoplay
     }
   };
 
   const handleMouseLeave = () => {
     console.log('handleMouseLeave');
-    if (swiperRef.current) {
-      swiperRef.current.autoplay.stop();
-    }
+    swiperRef.current?.autoplay?.stop(); // Stop autoplay
   };
 
   return (
@@ -50,7 +49,7 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
         onSwiper={(swiper) => (swiperRef.current = swiper)} // Capture the Swiper instance
       >
         {mediaSources.map((media, index) => (
-          <SwiperSlide key={"slide-" + index}>
+          <SwiperSlide key={`slide-${index}`}>
             {media.postMimeType.startsWith('video') ? (
               <video
                 src={media.postExcerpt} // Video source sent to postExcerpt due to bug in GraphQL field
@@ -67,12 +66,11 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
                 className="w-full h-full object-cover aspect-[74/93]"
               />
             )}
-
           </SwiperSlide>
         ))}
       </Swiper>
       <div
-        className="hoverLayer flex flex-col items-center justify-center absolute w-full h-full z-100 bg-[#00000091] text-[#ffffff] top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity"
+        className="hoverLayer flex flex-col items-center justify-center absolute w-full h-full z-10 bg-[#00000091] text-[#ffffff] top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

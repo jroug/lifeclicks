@@ -1,5 +1,6 @@
-export const logDev = (...args) => {
+export const logDev = (...args: unknown[]): void => {
     if (process.env.NODE_ENV === 'development') {
-        console.log(...args);
+      console.log(...args);
     }
-};  
+  };
+  
