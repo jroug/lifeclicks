@@ -26,7 +26,7 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
   const swiperRef = useRef<SwiperInstance | null>(null);
 
   const handleMouseEnter = () => {
-    console.log('handleMouseEnter');
+    // console.log('handleMouseEnter');
     if (swiperRef.current && swiperRef.current.params.autoplay && typeof swiperRef.current.params.autoplay !== 'boolean') {
       swiperRef.current.params.autoplay.delay = 500; // Safely access the delay property
       swiperRef.current.autoplay?.start(); // Start autoplay
@@ -34,7 +34,7 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
   };
 
   const handleMouseLeave = () => {
-    console.log('handleMouseLeave');
+    // console.log('handleMouseLeave');
     swiperRef.current?.autoplay?.stop(); // Stop autoplay
   };
 

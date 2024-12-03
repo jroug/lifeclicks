@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import SlideshowImage from "../components/SlideshowImage";
 import { motion } from "framer-motion";
-import { logDev } from "@/utils/logDev";
+// import { logDev } from "@/utils/logDev";
 import useSWR from "swr";
 
 type ProjectEdge = {
@@ -50,7 +50,6 @@ export default function Home() {
   };
 
   const homepageDataFetchUrl = `${process.env.NEXT_PUBLIC_BASE_URL}${process.env.NEXT_PUBLIC_BASE_PORT}/api/get-home-projects`;
-
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
   const { data, error, isLoading } = useSWR<ProjectsData>(
@@ -86,7 +85,7 @@ export default function Home() {
     return <div>No data available</div>;
   }
 
-  logDev("data", data.projects.edges);
+  // logDev("data", data.projects.edges);
 
   return (
     <motion.div

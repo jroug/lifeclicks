@@ -53,7 +53,9 @@ body {
 .w-auto-important {
   width: auto !important;
 }
-
+.h-auto-important{
+  height: auto !important;
+}
 
 
 header{

@@ -41,7 +41,7 @@ const GET_PROJECTS = gql`
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'GET') {
         try {
-            // // Fetch data from the GraphQL API
+            // Fetch data from the GraphQL API
             const { data } = await client.query({
                 query: GET_PROJECTS,
             });
