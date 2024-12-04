@@ -9,8 +9,8 @@ const client = new ApolloClient({
 
 // Define your GraphQL query with a variable for the slug
 const GET_PROJECT = gql`
-query PROJECT($id: ID!, $idType: ProjectIdType) {
-    project(id: $id, idType: $idType) {
+query PROJECT($slug: ID!) {
+    project(id: $slug, idType: SLUG) {
         id
         title
         projectExtras {
@@ -27,7 +27,14 @@ query PROJECT($id: ID!, $idType: ProjectIdType) {
             }
         }
     }
+    nextProjectPost(slug: $slug) {
+        id
+        slug
+        date
+        title
+    }
 }
+ 
 `;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -43,8 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             const { data } = await client.query({
                 query: GET_PROJECT,
                 variables: {
-                    id: slug,
-                    idType: 'SLUG', // Specify the ID type as SLUG
+                    slug: slug,
                 },
             });
 
