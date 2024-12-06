@@ -1,8 +1,31 @@
 'use client';
+
 import React from 'react';
 import Link from 'next/link';
+// import { logDev } from '@/utils/logDev';
 
-const MainMenu = () => {
+type MenuProps = {
+    mainMenuItems: {
+        edges: MenuEdge[];
+    };
+    socialMenuItems: {
+        edges: MenuEdge[];
+    };
+};
+
+type MenuEdge = {
+    node: menuItem;
+};
+
+type menuItem = {
+    id: string;
+    label: string;
+    uri: string;
+    target: string;
+};
+
+const MainMenu: React.FC<MenuProps> = ({ mainMenuItems, socialMenuItems }) => {
+
 
     const handleMenuClick = () => {
         const menu = document.getElementById('main-menu') as HTMLElement | null;
@@ -27,28 +50,31 @@ const MainMenu = () => {
             <div className="grid grid-cols-2 text-white pl-[38px]">
                 <div className="flex flex-col items-start justify-center h-custom">
                     <ul className="menu-items text-[#e5e5e5]">
-                        <li><Link href="/contact" className="menu-element" onClick={handleMenuClick} onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>CONTACT</Link></li>
-                        <li><Link href="/faq" className="menu-element" onClick={handleMenuClick} onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>F.A.Q.</Link></li>
-                        <li><Link href="/" className="menu-element" onClick={handleMenuClick} onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>portfolio</Link></li>
-                        <li><Link href="/about" className="menu-element" onClick={handleMenuClick} onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>about us</Link></li>
+                        {
+                            mainMenuItems.edges.map((menuItem) => (
+                                <li key={"menu-item-"+menuItem.node.id} >
+                                    <Link href={ menuItem.node.uri } className="menu-element" onClick={handleMenuClick} onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>{menuItem.node.label}</Link>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </div>
                 <div className="flex flex-col items-end justify-center h-custom">
                     <p className="social-in-menu pb-4 border-custom rotate-90- social-links-menu">
                         <span className="menu-social-item-wrapper" >
-                            <Link href="#" className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>instagram</Link> 
+                            <Link href={ socialMenuItems.edges[2].node.uri } target={ socialMenuItems.edges[2].node.target } className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>{ socialMenuItems.edges[2].node.label }</Link> 
                         </span>
                         <span className="menu-social-item-wrapper" >
                             <span className="menu-element p-4" >|</span>
                         </span>
                         <span className="menu-social-item-wrapper" >
-                            <Link href="#" className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>vimeo</Link> 
+                            <Link href={ socialMenuItems.edges[1].node.uri } target={ socialMenuItems.edges[1].node.target } className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>{ socialMenuItems.edges[1].node.label }</Link> 
                         </span>
                         <span className="menu-social-item-wrapper" >
                             <span className="menu-element p-4" >|</span>
                         </span>
                         <span className="menu-social-item-wrapper" >
-                            <Link href="#" className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>facebook</Link>
+                            <Link href={ socialMenuItems.edges[0].node.uri } target={ socialMenuItems.edges[0].node.target } className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>{ socialMenuItems.edges[0].node.label }</Link>
                         </span>
                     </p>
                 </div>
@@ -56,7 +82,7 @@ const MainMenu = () => {
             <div className="grid grid-cols-2 text-white pl-[38px]">
                 <div className="flex flex-col items-start justify-center h-[50px]">
                     <span className="menu-privacy-item-wrapper" >
-                        <Link href="#" className="menu-element uppercase text-sm" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>Privacy Policy</Link>
+                        <Link href="/privacy" className="menu-element uppercase text-sm" onClick={handleMenuClick} onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>Privacy Policy</Link>
                     </span>
                 </div>
                 <div className="flex flex-col items-end justify-center h-[50px] mr-[40px]"><hr className="menu-bottom-line mt-[5px]" /></div>

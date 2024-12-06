@@ -1,11 +1,17 @@
-"use client";
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+// import { logDev } from '@/utils/logDev';
+import { useSiteData } from '@/context/SiteDataContext';
+
 
 const About = () => {
 
+    const data = useSiteData();
+ 
     const aboutVariants ={
         initial: { x: +200 },
         enter: { x: 0 },
@@ -21,19 +27,17 @@ const About = () => {
             <main id="about-main" className="bg-black text-white" >
                 <div className="grid grid-cols-[90%,10%] ">
                     <div id="about-info-wrap" className="flex flex-row" >
-                        <div className="ml-[70px] mt-10 max-w-[400px]">
-                            <h1 className="text-[40px] md:text-[80px] ">ABOUT US</h1>
-                            <p className="uppercase">
-                                Your success is our mission, and we are here to ensure your wedding photography business flourishes, making every moment truly picture-perfect.
-                            </p>
+                        <div className="ml-[70px] mt-10 max-w-[450px]">
+                            <h1 className="text-[40px] md:text-[80px] ">{data.pagesMap['about'].title}</h1>
+                            <p className="uppercase" >{data.pagesMap['about'].content?.replace(/<\/?p>/g, '')}</p>
                         </div>
                         <div className="my-20 mx-auto">
                             <Image 
-                                className="about-logo"
-                                src="/images/logo/logo-mini-white.svg" 
+                                className={data.pagesMap['about'].featuredImage.node?.altText}
+                                src={data.pagesMap['about'].featuredImage.node.sourceUrl}
                                 alt="Logo" 
-                                width={464} // Adjust the width as needed
-                                height={500} // Adjust the height as needed
+                                width={data.pagesMap['about'].featuredImage.node.mediaDetails.width} // Adjust the width as needed
+                                height={data.pagesMap['about'].featuredImage.node.mediaDetails.height} // Adjust the height as needed
                             />
                         </div>
                     </div>
@@ -47,7 +51,7 @@ const About = () => {
                     <div className="block max-w-[80%] mx-auto mt-[30px] mb-[130px]">
                         <div className="block" >
                             <p className="block p-5 md:p-11" >
-                                Our priceless memories, what we have lived and carefully keep within us, are the most valuable we have gained in the journey of life. And if the passage of time constantly leads us to new adventures, there is certainly a way to keep all these moments “alive”, reliving every time we see them, the feelings we felt when we lived them.
+                                {data.pagesMap['about'].pageExtras?.secondaryText}
                             </p>
                             <p className="block" >
                                 <Link href="#" >Start a project with us</Link>

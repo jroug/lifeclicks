@@ -8,7 +8,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { motion } from 'framer-motion';
- 
+import { useSiteData } from '@/context/SiteDataContext';
+
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -32,6 +34,9 @@ interface FormData {
 }
 
 export default function ContactForm() {
+
+  const data = useSiteData();
+
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -71,8 +76,8 @@ export default function ContactForm() {
     <motion.div initial="initial" animate="enter" exit="exit" variants={contactVariants} transition={pageTransition} >
       <main className="custom-contact-us-height flex items-center justify-center bg-gray-100">
         <div className="mt-[100px] xl:mb-[100px] w-full max-w-6xl">
-          <h1 className="mx-5 md:mx-auto text-[40px] md:text-[80px] font-bold text-left mb-10 font-cormorant_garamond uppercase font-light">Contact Us</h1>
-          <p className="mx-5 md:mx-auto uppercase font-montserrat x-6 pt-5 pb-16 max-w-[500px] text-sm">Ready to capture your story with LifeClicks? Share your details below, and our team will be in touch within 24 hours with a personalized overview of our photography services. Let’s bring your moments to life.</p>
+          <h1 className="mx-5 md:mx-auto text-[40px] md:text-[80px] font-bold text-left mb-10 font-cormorant_garamond uppercase font-light">{data.pagesMap['contact'].title}</h1>
+          <p className="mx-5 md:mx-auto uppercase font-montserrat x-6 pt-5 pb-16 max-w-[500px] text-sm">{data.pagesMap['contact'].content?.replace(/<\/?p>/g, '')}</p>
         
           {submitted ? (
             <p className="text-green-600">Thank you for your message!</p>
@@ -130,12 +135,7 @@ export default function ContactForm() {
                     </div>  
                     <div className="md:col-span-2 md:max-w-[60%]" >
                         <input type="checkbox" id="terms" name="terms"  className="p-5 bg-black text-white form-checkbox" required />
-                        <p className="block text-sm font-medium mb-1 bg-black text-white uppercase pl-[50px] md:pl-[30px]">
-                          I consent for the information submitted above to be recorded and
-                          stored for the purposes of providing services relating to my inquiry. I
-                          agree that registration on or use of the Bottega 53 site constitutes
-                          agreement to its User Agreement & Privacy Policy
-                        </p>
+                        <p className="block text-sm font-medium mb-1 bg-black text-white uppercase pl-[50px] md:pl-[30px]">{data.pagesMap['contact'].pageExtras?.secondaryText}</p>
                     </div>
                     <div className="md:col-span-2 text-left">
                       <button type="submit" className=" text-white font-semibold rounded-md shadow-sm hover:underline ">SEND</button>

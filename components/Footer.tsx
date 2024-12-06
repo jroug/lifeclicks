@@ -9,7 +9,7 @@ const Footer = () => {
                     <div className="order-2 md:order-1 flex flex-col pt-5 pl-4 md:p-10">
                         <div className="w-[180px] flex flex-col mt-[-1px]">
                             <span className="underline-effect pb-[35px]"><Link href="#mailto:info@lifeclicks.com" className="uppercase text-footer" scroll={false}>info@lifeclicks.com</Link></span>
-                            <span className="underline-effect"><Link href="#" className="text-xs" scroll={false}>Privacy Policy</Link></span>
+                            <span className="underline-effect"><Link href="/privacy" className="text-xs" scroll={false}>Privacy Policy</Link></span>
                         </div>
                     </div>
                     <div className="order-1 md:order-2 flex flex-col items-center justify-center col-span-2 md:col-span-1 pt-[40px] md:p-10">

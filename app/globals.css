@@ -26,6 +26,8 @@ html {
  
 /* have scrollbar but hide it in the outer-motion-div*/
 .outer-motion-div{
+  position: relative;
+  z-index: 1;
   overflow: scroll; 
   height: 100vh;
   scrollbar-width: none;  
@@ -341,6 +343,17 @@ form .MuiFormControl-root{
   opacity:1;
 }
 
+.homeslide img,
+.homeslide video{
+  transition: transform 0.5s;
+}
+.homeslide:hover img,
+.homeslide:hover video{
+  transform: scale(1.05);
+}
+
+
+
 #menu-text,
 .menu-element{
   transition: color 350ms;
@@ -441,4 +454,15 @@ form .MuiFormControl-root{
     width: 50% !important;
   }
  
+}
+
+
+.privacy h2{
+  margin-top:20px;
+  margin-bottom:10px;
+  font-weight: 600;
+  font-size: 20px;
+}
+.privacy p{
+  margin-bottom:10px;
 }

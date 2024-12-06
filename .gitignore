@@ -41,3 +41,6 @@ next-env.d.ts
 
 # worpdress headless cms
 wp-backend
+
+# comment folder
+_tasks

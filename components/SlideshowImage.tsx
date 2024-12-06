@@ -39,12 +39,12 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
   };
 
   return (
-    <Link href={uri} className="w-full h-full relative group" scroll={false}>
+    <Link href={uri} className="w-full h-full relative group homeslide" scroll={false}>
       <Swiper
         modules={[Autoplay, EffectFade]}
         slidesPerView={1}
         effect="fade"
-        loop={true}
+        loop={ !mediaSources[0].postMimeType.startsWith('video') }
         className="w-full h-full"
         onSwiper={(swiper) => (swiperRef.current = swiper)} // Capture the Swiper instance
       >
