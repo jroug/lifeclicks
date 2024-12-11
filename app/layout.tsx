@@ -101,7 +101,10 @@ const client = new ApolloClient({
 // Function to fetch data from the GraphQL API
 async function fetchData() {
   try {
-    const { data } = await client.query({ query: ALL_DATA });
+    const { data } = await client.query({ 
+      fetchPolicy: 'network-only',
+      query: ALL_DATA 
+    });
 
     // Transform projects into a map with `nextProjectSlug`
     const projectsMap: Record<string, Project> = data.projects.edges.reduce(
