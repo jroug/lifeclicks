@@ -75,3 +75,28 @@ export const ALL_DATA = gql`
     }
   }
 `;
+
+export const SEND_EMAIL = gql`query SEND_EMAIL(
+  $form_name: String, 
+  $form_email: String, 
+  $form_location: String, 
+  $form_eventType: String, 
+  $form_role: String, 
+  $form_hear: String, 
+  $form_date: String, 
+  $form_eventLocation: String, 
+  $form_budget: String, 
+  $form_message: String){
+    emailSent( 
+      form_name: $form_name ,  
+      form_email: $form_email, 
+      form_location: $form_location, 
+      form_eventType: $form_eventType, 
+      form_role: $form_role, 
+      form_hear: $form_hear, 
+      form_date: $form_date, 
+      form_eventLocation: $form_eventLocation, 
+      form_budget: $form_budget, 
+      form_message: $form_message,
+    )
+} `;

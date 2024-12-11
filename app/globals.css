@@ -466,3 +466,16 @@ form .MuiFormControl-root{
 .privacy p{
   margin-bottom:10px;
 }
+
+ 
+
+.faq-item p{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.8s;
+}
+ 
+.faq-item.open p{
+  height:auto;
+  max-height: 100px; /* A value larger than the maximum height of your content */
+}
