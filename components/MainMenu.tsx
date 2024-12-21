@@ -5,26 +5,16 @@ import Link from 'next/link';
 // import { logDev } from '@/utils/logDev';
 
 type MenuProps = {
-    mainMenuItems: {
-        edges: MenuEdge[];
-    };
-    socialMenuItems: {
-        edges: MenuEdge[];
-    };
+    mainMenuData: MenuItems | {};
+    socialMenuData: MenuItems | {};
 };
 
-type MenuEdge = {
-    node: menuItem;
-};
+const MainMenu: React.FC<MenuProps> = ({ mainMenuData, socialMenuData }) => {
 
-type menuItem = {
-    id: string;
-    label: string;
-    uri: string;
-    target: string;
-};
 
-const MainMenu: React.FC<MenuProps> = ({ mainMenuItems, socialMenuItems }) => {
+
+    const mainMenuItems = mainMenuData;
+    const socialMenuItems = socialMenuData;
 
 
     const handleMenuClick = () => {
@@ -45,13 +35,16 @@ const MainMenu: React.FC<MenuProps> = ({ mainMenuItems, socialMenuItems }) => {
         }
     };
 
+    if ( !('edges' in mainMenuItems) ) return <></>
+    if ( !('edges' in socialMenuItems) ) return <></>
+
     return (
         <div className="custom-main-menu-wrapper w-full" id="main-menu">
             <div className="grid grid-cols-2 text-white pl-[38px]">
                 <div className="flex flex-col items-start justify-center h-custom">
                     <ul className="menu-items text-[#e5e5e5]">
                         {
-                            mainMenuItems.edges.map((menuItem) => (
+                            mainMenuItems?.edges?.map((menuItem) => (
                                 <li key={"menu-item-"+menuItem.node.id} >
                                     <Link href={ menuItem.node.uri } className="menu-element" onClick={handleMenuClick} onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>{menuItem.node.label}</Link>
                                 </li>

@@ -3,17 +3,16 @@ import "./globals.css";
 
 // Context Providers
 import PageAnimatePresence from "@/context/PageAnimatePresence";
-import { SiteDataProvider } from "@/context/SiteDataContext";
+// import { SiteDataProvider } from "@/context/SiteDataContext";
 
 // Components
 import Header from "@/components/Header";
 import MainMenu from "@/components/MainMenu";
 
-// Apollo Client
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { fetchData } from "@/utils/dataFetcher";
+import { logDev } from "@/utils/logDev";
 
-// GraphQL Query
-import { ALL_DATA } from "@/graphql/queries"; // Import the query
+
 
 // Utilities
 // import { logDev } from "@/utils/logDev";
@@ -25,126 +24,18 @@ export const metadata: Metadata = {
 };
 
 
-
-
-// Define interfaces for the data
-interface ProjectMedia {
-  id: string;
-  fullFileUrl: string | null;
-  postMimeType: string;
-  postExcerpt: string | null;
-  postTitle?: string | null;
-  fullWidth?: number | null;
-  fullHeight?: number | null;
-}
-
-interface ProjectExtras {
-  eventType: string;
-  eventPlace: string;
-  homepageMedia: ProjectMedia[];
-  portfolioPageMedia: ProjectMedia[];
-}
-
-interface Project {
-  id: string;
-  title: string;
-  slug: string;
-  uri: string;
-  projectExtras: ProjectExtras;
-  nextProjectSlug: string;
-}
-
-interface PageExtras {
-  secondaryText: string | null;
-}
-
-interface FeaturedImage {
-  sourceUrl: string;
-  altText: string;
-  mediaDetails: {
-    width: number;
-    height: number;
-  };
-}
-
-interface Page {
-  id: string;
-  title: string;
-  slug: string;
-  uri: string;
-  content: string | null;
-  date: string;
-  pageExtras: PageExtras;
-  featuredImage: FeaturedImage | null;
-}
-
-interface ProjectWithNode {
-  node:{
-    id: string;
-    title: string;
-    slug: string;
-    uri: string;
-    projectExtras: ProjectExtras;
-    nextProjectSlug: string;
-  }
-}
-
- 
- 
-
-// Apollo Client setup
-const client = new ApolloClient({
-  uri: process.env.WORDPRESS_GRAPHQL_API_URL, // GraphQL API endpoint
-  cache: new InMemoryCache(),
-});
-
-// Function to fetch data from the GraphQL API
-async function fetchData() {
-  try {
-    const { data } = await client.query({ 
-      fetchPolicy: 'network-only',
-      query: ALL_DATA 
-    });
-
-    // Transform projects into a map with `nextProjectSlug`
-    const projectsMap: Record<string, Project> = data.projects.edges.reduce(
-      (acc: Record<string, Project>, edge: ProjectWithNode, index: number, edges: ProjectWithNode[]) => {
-        const slug = edge.node.slug;
-        const nextSlug = edges[(index + 1) % edges.length].node.slug;
-        acc[slug] = {
-          ...edge.node,
-          nextProjectSlug: nextSlug,
-        };
-        return acc;
-      },
-      {}
-    );
-
-    // Transform pagesMap
-    const pagesMap: Record<string, Page> = data.pages.nodes.reduce((acc: Record<string, Page>, node: Page) => {
-      acc[node.slug] = node;
-      return acc;
-    }, {});
-
-    return { mainMenuItems: data.mainMenuItems, socialMenuItems: data.socialMenuItems, projectsMap, pagesMap };
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return { mainMenuItems: [], socialMenuItems: [], projectsMap: {}, pagesMap: {} };
-  }
-}
-
 // RootLayout component
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { mainMenuItems, socialMenuItems, projectsMap, pagesMap } = await fetchData();
 
-  // console.log('mainMenuItems', mainMenuItems);
-  // console.log('socialMenuItems', socialMenuItems);
-  // console.log('projectsMap', projectsMap);
-  // console.log('pagesMap', pagesMap);
+  logDev('fetchData - layout.tsx 1');
+  const { mainMenuItems, socialMenuItems } = await fetchData();
+  logDev('fetchData - layout.tsx 2');
+
+
   return (
     <html lang="en">
       <head>
@@ -157,12 +48,14 @@ export default async function RootLayout({
       <body className="antialiased custom-padding-top bg-black">
         {/* Header and Main Menu */}
         <Header />
-        <MainMenu mainMenuItems={mainMenuItems} socialMenuItems={socialMenuItems} />
+        <MainMenu mainMenuData={ mainMenuItems } socialMenuData={ socialMenuItems } />
 
         {/* Context Providers */}
-        <SiteDataProvider data={{ projectsMap, pagesMap }}>
-          <PageAnimatePresence>{children}</PageAnimatePresence>
-        </SiteDataProvider>
+        {/* <SiteDataProvider data={{ projectsMap, pagesMap }} > */}
+          <PageAnimatePresence>
+            {children}
+          </PageAnimatePresence>
+        {/* </SiteDataProvider> */}
       </body>
     </html>
   );

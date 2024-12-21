@@ -8,6 +8,7 @@ export const ALL_DATA = gql`
           id
           label
           uri
+          target
         }
       }
     }
@@ -73,6 +74,7 @@ export const ALL_DATA = gql`
         }
       }
     }
+    currentDateTime:currentDateTime
   }
 `;
 

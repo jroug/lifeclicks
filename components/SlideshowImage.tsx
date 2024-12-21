@@ -9,14 +9,10 @@ import 'swiper/css/effect-fade';
 import { useRef } from 'react';
 import type { Swiper as SwiperInstance } from 'swiper';
 
-interface MediaSource {
-  fullFileUrl: string;
-  postExcerpt: string;
-  postMimeType: string;
-}
+ 
 
 interface SlideshowImageProps {
-  mediaSources: MediaSource[];
+  mediaSources: ProjectMedia[];
   title: string;
   place: string;
   uri: string;

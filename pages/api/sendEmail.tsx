@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client'; // Ensure gql is imported for GraphQL queries
+import { ApolloClient, InMemoryCache } from '@apollo/client'; // Ensure gql is imported for GraphQL queries
 import { SEND_EMAIL } from "@/graphql/queries"; // Import the query
 
 // Set up the Apollo Client instance
