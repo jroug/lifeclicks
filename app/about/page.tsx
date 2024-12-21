@@ -9,7 +9,7 @@ logDev('fetchData - About 2');
 
 // Metadata for the application
 export const metadata: Metadata = {
-    title: ('about' in pagesMap) ? pagesMap['about'].title : "About",
+    title: ('about' in pagesMap) ? pagesMap['about'].title : "404",
 };
 
 export default function About() {

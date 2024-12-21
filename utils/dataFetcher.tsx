@@ -70,11 +70,11 @@ export async function fetchData() {
         });
 
         const { data } = await client.query({ 
-            fetchPolicy: 'network-only',
+            fetchPolicy: 'cache-first',
             query: ALL_DATA,
             context: {
                 fetchOptions: {
-                  next: { revalidate: 5 },
+                  next: { revalidate: 600 },
                 },
             },
         });
