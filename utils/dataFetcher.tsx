@@ -74,7 +74,7 @@ export async function fetchData() {
             query: ALL_DATA,
             context: {
                 fetchOptions: {
-                  next: { revalidate: 2 },
+                  next: { revalidate: 600 },
                 },
             },
         });
