@@ -95,14 +95,14 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
                   {projectTitle}
                 </h1>
               </div>
-              <div className="flex flex-col h-full relative w-full md:w-half-important">
+              <div className="flex flex-col h-full relative w-full md:w-half-important ">
                 {portfolioPageMedia.length > 0 && portfolioPageMedia[0]?.postExcerpt && (
                   <Image
                     src={portfolioPageMedia[0].postExcerpt}
                     alt={portfolioPageMedia[0]?.postTitle || ""}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover"
+                    className="object-cover object-top"
                     priority={true}
                   />
                 )}
