@@ -36,13 +36,13 @@ const AboutPageClient: React.FC<AboutPageClientProps> = ({ pagesMap }) => {
         <>
             <motion.div initial="initial" animate="enter" exit="exit" variants={aboutVariants} transition={pageTransition} >
                 <main id="about-main" className="bg-black text-white" >
-                    <div className="grid grid-cols-[90%,10%] ">
+                    <div className="grid md:grid-cols-[90%,10%] ">
                         <div id="about-info-wrap" className="flex flex-row" >
-                            <div className="ml-[70px] mt-10 max-w-[450px]">
+                            <div className="ml-[70px] mt-10 max-w-[450px] md:min-w-[390px]">
                                 <h1 className="text-[40px] md:text-[80px] ">{pageAboutData?.title}</h1>
                                 <p className="uppercase" >{pageAboutData?.content?.replace(/<\/?p>/g, '')}</p>
                             </div>
-                            <div className="my-20 mx-auto">
+                            <div className="my-20 mx-auto px-5">
                                 <Image 
                                     className={pageAboutData?.featuredImage?.node.altText}
                                     src={pageAboutData?.featuredImage?.node.sourceUrl || '/images/placeholder_image.jpg' }
@@ -52,7 +52,7 @@ const AboutPageClient: React.FC<AboutPageClientProps> = ({ pagesMap }) => {
                                 />
                             </div>
                         </div>
-                        <div className="flex flex-col items-end mt-20 md:mt-0" >
+                        <div className="md:flex flex-col items-end mt-20 md:mt-0 hidden" >
                             <div className="custom-margins-hr-about">
                                 <hr />
                             </div>

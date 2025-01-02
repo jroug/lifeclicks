@@ -52,7 +52,7 @@ export default async function RootLayout({
 
         {/* Context Providers */}
         {/* <SiteDataProvider data={{ projectsMap, pagesMap }} > */}
-          <PageAnimatePresence>
+          <PageAnimatePresence socialMenuData={ socialMenuItems } >
             {children}
           </PageAnimatePresence>
         {/* </SiteDataProvider> */}

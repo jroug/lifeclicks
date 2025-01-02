@@ -46,7 +46,7 @@ export default function HomePageClient({ homePageProjectData }: HomePageClientPr
       transition={pageTransition}
       key="home"
     >
-      <main className="bg-gray-100 flex items-center justify-center min-h-screen">
+      <main className="bg-gray-100 flex justify-center min-h-screen">
         <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 w-full mx-auto">
           {Object.entries(homePageProjectData).map(([key, project]) => (
             <div

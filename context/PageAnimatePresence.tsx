@@ -9,10 +9,12 @@ import Footer from '@/components/Footer'
 
 
 interface PageAnimatePresenceProps {
-  children: ReactNode
+  children: ReactNode,
+  socialMenuData: MenuItems | {};
 }
 
-const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children }) => {
+const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children, socialMenuData }) => {
+
   const pathname = usePathname()
 
 
@@ -28,20 +30,20 @@ const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children }) =
   }
 
   return (
-    <AnimatePresence mode="popLayout">
+    <AnimatePresence mode="popLayout" >
         <motion.div key={pathname} initial="initial" animate="enter" exit="exit" variants={generalVariants} transition={pageTransition} 
         className="outer-motion-div "
         >
           <FrozenRoute>{children}</FrozenRoute>
-          <Footer />
+          <Footer socialMenuData={socialMenuData} />
       </motion.div>
     </AnimatePresence>
   )
 }
 
-// Add PropTypes for ESLint validation
-PageAnimatePresence.propTypes = {
-  children: PropTypes.node.isRequired,
-}
+// // Add PropTypes for ESLint validation
+// PageAnimatePresence.propTypes = {
+//   children: PropTypes.node.isRequired,
+// }
 
 export default PageAnimatePresence

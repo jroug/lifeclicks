@@ -84,14 +84,14 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
           {/* Main Project Slide */}
           <SwiperSlide key="main-slide">
             <div className="flex h-full relative bg-araxnowhite flex-col md:flex-row">
-              <div className="absolute md:relative z-10 bg-araxnowhite flex flex-col items-center justify-center h-full w-full md:w-half-important">
+              <div className="relative z-10 bg-araxnowhite flex flex-col items-center justify-center h-full w-full md:w-half-important">
                 <span className="font-montserrat uppercase w-full text-2xl text-black text-center">
                   {projectEventType}
                 </span>
                 <span className="font-montserrat uppercase w-full text-sm text-black text-center santorini-subtitle">
                   {projectEventPlace}
                 </span>
-                <h1 className="font-cormorant_garamond uppercase w-full text-6xl text-black text-center">
+                <h1 className="font-cormorant_garamond uppercase w-full text-5xl sm:text-6xl text-black text-center">
                   {projectTitle}
                 </h1>
               </div>

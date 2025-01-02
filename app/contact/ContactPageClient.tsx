@@ -8,6 +8,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { motion } from 'framer-motion';
+import parse from 'html-react-parser';
 // import { useSiteData } from '@/context/SiteDataContext';
 
 
@@ -190,14 +191,14 @@ const ContactPageClient: React.FC<ContactPageClientProps> = ({ pagesMap }) => {
     <motion.div initial="initial" animate="enter" exit="exit" variants={contactVariants} transition={pageTransition} >
       <main className="custom-contact-us-height flex items-center justify-center bg-gray-100">
         <div className="mt-[100px] xl:mb-[100px] w-full max-w-6xl">
-          <h1 className="mx-5 md:mx-auto text-[40px] md:text-[80px] font-bold text-left mb-10 font-cormorant_garamond uppercase font-light">{pageContactData?.title}</h1>
-          <p className="mx-5 md:mx-auto uppercase font-montserrat x-6 pt-5 pb-16 max-w-[500px] text-sm">{pageContactData.content?.replace(/<\/?p>/g, '')}</p>
+          <h1 className="mx-5 md:mx-auto text-[40px] md:text-[80px] font-bold text-left sm:mb-10 font-cormorant_garamond uppercase font-light">{pageContactData?.title}</h1>
+          <p className="mx-5 uppercase font-montserrat x-6 pt-5 pb-16 max-w-[500px] text-[16px]">{pageContactData.content?.replace(/<\/?p>/g, '')}</p>
         
           {submitted ? (
             <p className="text-green-600 text-[40px] font-montserrat text-center pt-[100px] pb-[200px]">{formSuccessMessage}</p>
           ) : (
             <ThemeProvider theme={theme}>
-              <form id="contact_submit" className="contact-us bg-black font-montserrat pl-5 md:pl-20 pr-10 md:pr-60 pt-20 pb-60" onSubmit={handleSubmit}>
+              <form id="contact_submit" className="contact-us bg-black font-montserrat pl-5 md:pl-20 pr-10 md:pr-60 pt-20 pb-10 md:pb-60" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 " >
                     <div>
                       <TextField inputProps={{ maxLength: 50 }} label="Full Name" id="form_name" name="form_name" value={formData.form_name} onChange={handleChange} variant="standard" fullWidth required autoComplete="off" />
@@ -257,7 +258,7 @@ const ContactPageClient: React.FC<ContactPageClientProps> = ({ pagesMap }) => {
                     </div>  
                     <div className="md:col-span-2 md:max-w-[60%]" >
                         <input type="checkbox" id="terms" name="terms"  className="p-5 bg-black text-white form-checkbox" required />
-                        <p className="block text-sm font-medium mb-1 bg-black text-white uppercase pl-[50px] md:pl-[30px]">{pageContactData.pageExtras?.secondaryText}</p>
+                        <p className="block text-sm font-medium mb-1 bg-black text-white uppercase pl-[50px] md:pl-[30px]">{pageContactData.pageExtras?.secondaryText!==null ? parse(pageContactData.pageExtras?.secondaryText) : ''}</p>
                     </div>
                     <div className="md:col-span-2 text-left">
                       <button type="submit" className=" text-white font-semibold rounded-md shadow-sm hover:underline ">SEND</button>

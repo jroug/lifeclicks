@@ -133,7 +133,7 @@ footer{
 
 /* menu items effect start*/
 .menu-items li{
-  padding-top: 80px;
+  padding-top: 40px;
   overflow: hidden;
 }
 .menu-items li a{
@@ -423,6 +423,7 @@ form .MuiFormControl-root{
  
 .next-project{
   color:#515151;
+  font-size:33px;
 }
 .next-project:hover{
   color:#000000;
@@ -442,7 +443,7 @@ form .MuiFormControl-root{
 
 @media only screen and (max-width: 500px) {
   .menu-items li{
-    padding-top:50px;
+    padding-top:25px;
   }
   .menu-items li a{
     font-size: 35px;
