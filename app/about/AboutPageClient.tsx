@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
- 
+import parse from 'html-react-parser';
 
 
 // import { logDev } from '@/utils/logDev';
@@ -40,7 +40,7 @@ const AboutPageClient: React.FC<AboutPageClientProps> = ({ pagesMap }) => {
                         <div id="about-info-wrap" className="flex flex-row" >
                             <div className="ml-[70px] mt-10 max-w-[450px] md:min-w-[390px]">
                                 <h1 className="text-[40px] md:text-[80px] ">{pageAboutData?.title}</h1>
-                                <p className="uppercase" >{pageAboutData?.content?.replace(/<\/?p>/g, '')}</p>
+                                <p className="uppercase" >{parse(pageAboutData.content)}</p>
                             </div>
                             <div className="my-20 mx-auto px-5">
                                 <Image 
