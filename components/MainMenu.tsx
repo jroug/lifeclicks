@@ -78,7 +78,7 @@ const MainMenu: React.FC<MenuProps> = ({ mainMenuData, socialMenuData }) => {
                         <Link href="/privacy" className="menu-element uppercase text-sm" onClick={handleMenuClick} onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>Privacy Policy</Link>
                     </span>
                 </div>
-                <div className="flex flex-col items-end justify-center h-[50px] mr-[40px]"><hr className="menu-bottom-line mt-[5px]" /></div>
+                <div className="flex flex-col items-end justify-center h-[50px] mr-[40px]"><hr className="menu-bottom-line" /></div>
             </div>
         </div>
     );

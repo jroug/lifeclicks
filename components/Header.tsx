@@ -93,6 +93,7 @@ const Header: React.FC = () => {
                   alt="Logo"
                   width={120}
                   height={30}
+                  className="main-logo"
                 />
               </Link>
             </span>
@@ -101,7 +102,7 @@ const Header: React.FC = () => {
             <span className="hidden-reveal-item-wrapper">
               <button
                 type="button"
-                className="hidden-reveal-item text-white font-cormorant_garamond text-[1.875rem] leading-[23px]"
+                className="hidden-reveal-item text-white font-cormorant_garamond"
                 onClick={handleMenuButtonClick}
                 onMouseOver={(e) => handleMenuButtonHover(e, true)}
                 onMouseOut={(e) => handleMenuButtonHover(e, false)}
