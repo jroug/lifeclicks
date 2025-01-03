@@ -45,7 +45,7 @@ export const ALL_DATA = gql`
         }
       }
     }
-    projects(where: { orderby: { field: MENU_ORDER, order: ASC } }) {
+    projects(where: { orderby: { field: MENU_ORDER, order: ASC } }, first: 100) {
       edges {
         node {
           id

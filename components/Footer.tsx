@@ -17,7 +17,7 @@ const Footer: React.FC<MenuProps> = ({ socialMenuData }) => {
 
                     <div className="order-2 md:order-1 flex justify-center sm:flex-col pt-5 sm:pl-4 md:p-10">
                         <div className="w-[180px] flex flex-col mt-[-1px]">
-                            <span className="underline-effect sm:pb-[35px]"><Link href="#mailto:info@lifeclicks.com" className="uppercase text-footer" scroll={false}>info@lifeclicks.com</Link></span>
+                            <span className="underline-effect sm:pb-[35px]"><Link href="mailto:info@lifeclicks.com" className="uppercase text-footer" scroll={false}>info@lifeclicks.com</Link></span>
                             <span className="underline-effect"><Link href="/privacy" className="text-xs" scroll={false}>Privacy Policy</Link></span>
                         </div>
                     </div>
