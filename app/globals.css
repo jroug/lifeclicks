@@ -494,33 +494,15 @@ form .MuiFormControl-root{
   .modulo2{
     display: none;
   }
-  .modulo3{
-    display: block;
-  }
-  .modulo4{
-    display: block;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 1536px){
-  .modulo2{
-    display: block;
-  }
   .modulo3{
     display: none;
-  }
-  .modulo4{
-    display: block;
   }
 }
 
 @media (min-width: 1536px) {
-  .modulo2{
-    display: block;
-  }
-  .modulo3{
-    display: block;
-  }
   .modulo4{
     display: none;
   }
