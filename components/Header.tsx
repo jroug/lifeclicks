@@ -98,7 +98,7 @@ const Header: React.FC = () => {
               </Link>
             </span>
           </div>
-          <div className="flex flex-col items-end justify-center pr-10">
+          <div className="flex flex-col items-end justify-center pr-10 ">
             <span className="hidden-reveal-item-wrapper">
               <button
                 type="button"

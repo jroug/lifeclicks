@@ -37,6 +37,11 @@ export default function HomePageClient({ homePageProjectData }: HomePageClientPr
     }
   }, []);
 
+  const homePageProjectDataLength = Object.entries(homePageProjectData).length;
+  const modulo4 = homePageProjectDataLength % 4;
+  const modulo3 = homePageProjectDataLength % 3;
+  const modulo2 = homePageProjectDataLength % 2;
+
   return (
     <motion.div
       initial="initial"
@@ -48,10 +53,16 @@ export default function HomePageClient({ homePageProjectData }: HomePageClientPr
     >
       <main className="bg-gray-100 flex justify-center min-h-screen">
         <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 w-full mx-auto">
-          {Object.entries(homePageProjectData).map(([key, project]) => (
+          {Object.entries(homePageProjectData).map(([key, project], index) => (
             <div
               key={`key-${key}`}
-              className="group flex justify-center overflow-hidden text-center"
+              className={
+                  "group flex justify-center overflow-hidden text-center" 
+                  + (index >= homePageProjectDataLength - modulo2 ? ' modulo2' : '')
+                  + (index >= homePageProjectDataLength - modulo3 ? ' modulo3' : '')
+                  + (index >= homePageProjectDataLength - modulo4 ? ' modulo4' : '')
+              }
+              data-index={index}
             >
               <SlideshowImage
                 key={`SlideshowImage-${key}`}

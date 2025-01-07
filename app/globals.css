@@ -446,6 +446,18 @@ form .MuiFormControl-root{
 
 
 @media only screen and (max-width: 500px) {
+  header .grid div{
+    height: 55px;
+  }
+  .custom-padding-top{
+    padding-top: 55px;
+  }
+  .custom-padding-bottom{
+    padding-bottom: 55px;
+  }
+  .custom-margin-top-minus{
+    margin-top: -55px;
+  }
   .main-logo{
     height:20px;
     width:80px;
@@ -476,13 +488,24 @@ form .MuiFormControl-root{
   }
 }
 
+
+.modulo2{
+  display: none;
+}
 @screen md {
   .md\:w-half-important {
     width: 50% !important;
   }
- 
+  .modulo3{
+    display: none;
+  }
 }
 
+@screen 2xl {
+  .modulo4{
+    display: none;
+  }
+}
 
 .privacy h2{
   margin-top:20px;
@@ -490,11 +513,10 @@ form .MuiFormControl-root{
   font-weight: 600;
   font-size: 20px;
 }
+
 .privacy p{
   margin-bottom:10px;
 }
-
- 
 
 .faq-item p{
   max-height: 0;
@@ -506,3 +528,4 @@ form .MuiFormControl-root{
   height:auto;
   max-height: 100px; /* A value larger than the maximum height of your content */
 }
+

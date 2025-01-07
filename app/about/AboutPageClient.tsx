@@ -38,11 +38,11 @@ const AboutPageClient: React.FC<AboutPageClientProps> = ({ pagesMap }) => {
                 <main id="about-main" className="bg-black text-white" >
                     <div className="grid md:grid-cols-[90%,10%] ">
                         <div id="about-info-wrap" className="flex flex-row" >
-                            <div className="ml-[70px] mt-10 max-w-[450px] md:min-w-[390px]">
+                            <div className="ml-[70px] mt-10 max-w-[450px] md:min-w-[390px] flex flex-col justify-center">
                                 <h1 className="text-[40px] md:text-[80px] ">{pageAboutData?.title}</h1>
-                                <p className="uppercase" >{parse(pageAboutData.content)}</p>
+                                <div className="uppercase" >{parse(pageAboutData.content)}</div>
                             </div>
-                            <div className="my-20 mx-auto px-5">
+                            <div className="mt-[30px] mx-auto px-5 flex flex-col justify-center">
                                 <Image 
                                     className={pageAboutData?.featuredImage?.node.altText}
                                     src={pageAboutData?.featuredImage?.node.sourceUrl || '/images/placeholder_image.jpg' }
@@ -59,15 +59,17 @@ const AboutPageClient: React.FC<AboutPageClientProps> = ({ pagesMap }) => {
                         </div>
                     </div>
                     <div className="grid grid-cols-1 text-white">
-                        <div className="block max-w-[80%] mx-auto mt-[30px] mb-[130px]">
+                        <div className="block max-w-[80%] mx-auto mt-5px]">
                             <div className="block" >
                                 <p className="block p-5 md:p-11" >
                                     {pageAboutData?.pageExtras?.secondaryText}
                                 </p>
-                                <p className="block" >
-                                    <Link href="#" >Start a project with us</Link>
-                                </p>
                             </div>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-1 text-white">
+                        <div className="ml-[70px] block max-w-[80%] mt-5px] mb-[130px] underline">
+                            <Link href="/contact" >Start a project with us</Link>
                         </div>
                     </div>
                 </main>

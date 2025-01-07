@@ -192,7 +192,7 @@ const ContactPageClient: React.FC<ContactPageClientProps> = ({ pagesMap }) => {
       <main className="custom-contact-us-height flex items-center justify-center bg-gray-100">
         <div className="mt-[100px] xl:mb-[100px] w-full max-w-6xl">
           <h1 className="mx-5 md:mx-auto text-[40px] md:text-[80px] font-bold text-left sm:mb-10 font-cormorant_garamond uppercase font-light">{pageContactData?.title}</h1>
-          <p className="mx-5 uppercase font-montserrat x-6 pt-5 pb-16 max-w-[500px] text-[16px]">{pageContactData.content?.replace(/<\/?p>/g, '')}</p>
+          <div className="mx-5 md:mx-0 uppercase font-montserrat pt-5 pb-16 max-w-[500px] text-[16px]">{pageContactData.content ? parse(pageContactData.content) : '' }</div>
         
           {submitted ? (
             <p className="text-green-600 text-[40px] font-montserrat text-center pt-[100px] pb-[200px]">{formSuccessMessage}</p>
