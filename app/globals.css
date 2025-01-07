@@ -489,8 +489,41 @@ form .MuiFormControl-root{
 }
 
 
-.modulo2{
-  display: none;
+
+@media (max-width: 768px) {
+  .modulo2{
+    display: none;
+  }
+  .modulo3{
+    display: block;
+  }
+  .modulo4{
+    display: block;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1536px){
+  .modulo2{
+    display: block;
+  }
+  .modulo3{
+    display: none;
+  }
+  .modulo4{
+    display: block;
+  }
+}
+
+@media (min-width: 1536px) {
+  .modulo2{
+    display: block;
+  }
+  .modulo3{
+    display: block;
+  }
+  .modulo4{
+    display: none;
+  }
 }
 
 
@@ -498,28 +531,9 @@ form .MuiFormControl-root{
   .md\:w-half-important {
     width: 50% !important;
   }
-  .modulo2{
-    display: block;
-  }
-  .modulo3{
-    display: none !important;
-  }
-  .modulo4{
-    display: block;
-  }
-}
 
-@screen 2xl {
-  .modulo2{
-    display: block;
-  }
-  .modulo3{
-    display: block;
-  }
-  .modulo4{
-    display: none !important;
-  }
 }
+ 
 
 .privacy h2{
   margin-top:20px;
