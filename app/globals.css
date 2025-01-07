@@ -490,13 +490,13 @@ form .MuiFormControl-root{
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .modulo2{
     display: none;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1536px){
+@media (min-width: 768px) and (max-width: 1535px){
   .modulo3{
     display: none;
   }
