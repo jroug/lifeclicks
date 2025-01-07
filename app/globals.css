@@ -492,18 +492,32 @@ form .MuiFormControl-root{
 .modulo2{
   display: none;
 }
+
+
 @screen md {
   .md\:w-half-important {
     width: 50% !important;
   }
+  .modulo2{
+    display: block;
+  }
   .modulo3{
-    display: none;
+    display: none !important;
+  }
+  .modulo4{
+    display: block;
   }
 }
 
 @screen 2xl {
+  .modulo2{
+    display: block;
+  }
+  .modulo3{
+    display: block;
+  }
   .modulo4{
-    display: none;
+    display: none !important;
   }
 }
 
