@@ -5,7 +5,7 @@ import { onError } from "@apollo/client/link/error";
 // GraphQL Query
 import { ALL_DATA } from "@/graphql/queries"; // Import the query
  
-import { logDev } from "@/utils/logDev";
+// import { logDev } from "@/utils/logDev";
 
 
 // Define interfaces for the data
@@ -14,12 +14,8 @@ import { logDev } from "@/utils/logDev";
 
 
 
-
-
- 
- 
-let projectsMap: ProjectsMap | {};
-let pagesMap: PagesMap | {};
+let projectsMap: ProjectsMap;
+let pagesMap: PagesMap;
 let mainMenuItems: MenuItems | {};
 let socialMenuItems: MenuItems | {};
  
@@ -80,7 +76,7 @@ export async function fetchData() {
         });
 
 
-        logDev("----------------------------------------- currentDateTime ap: ", data.currentDateTime);
+        // logDev("----------------------------------------- currentDateTime ap: ", data.currentDateTime);
 
         // Transform projects into a map with `nextProjectSlug`
         projectsMap = data.projects.edges.reduce(
@@ -92,7 +88,7 @@ export async function fetchData() {
                 nextProjectSlug: nextSlug,
             };
             return acc;
-        },{});
+        }, {});
     
         
 
@@ -108,8 +104,8 @@ export async function fetchData() {
 
         socialMenuItems = data.socialMenuItems;
  
-        const finalData = { mainMenuItems: mainMenuItems, socialMenuItems: socialMenuItems, projectsMap, pagesMap }
-
+        const finalData = { mainMenuItems, socialMenuItems, projectsMap, pagesMap }
+        // logDev('---> finalData ---> ', finalData);
         return finalData;
 
     } catch (error) {

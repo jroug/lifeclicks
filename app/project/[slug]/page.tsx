@@ -18,7 +18,7 @@ export async function generateMetadata( { params }: Props ): Promise<Metadata> {
 
 
   return {
-    title: ( 'nayara-joshua' in projectsMap || 'new-project' in projectsMap ) && slug ? projectsMap[slug].title : '404' ,
+    title: ( slug in projectsMap ) && slug ? projectsMap[slug].title : '404' ,
   };
 
 }
