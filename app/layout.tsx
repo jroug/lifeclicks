@@ -19,7 +19,7 @@ import { logDev } from "@/utils/logDev";
 
 // Metadata for the application
 export const metadata: Metadata = {
-  title: "Crafting Cinematic Love Stories",
+  title: "Lifeclicks Studio",
   description: "Crafting Cinematic Love Stories",
 };
 

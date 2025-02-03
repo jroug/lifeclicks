@@ -2,6 +2,7 @@ import ProjectPageClient from "./ProjectPageClient";
 import type { Metadata } from "next";
 import { fetchData } from "@/utils/dataFetcher";
 import { logDev } from "@/utils/logDev";
+import { buildHeadTitle } from "@/utils/buildHeadTitle";
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -18,7 +19,7 @@ export async function generateMetadata( { params }: Props ): Promise<Metadata> {
 
 
   return {
-    title: ( slug in projectsMap ) && slug ? projectsMap[slug].title : '404' ,
+    title: ( slug in projectsMap ) && slug ? buildHeadTitle(projectsMap[slug].title) : '404'
   };
 
 }
