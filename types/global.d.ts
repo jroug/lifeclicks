@@ -26,6 +26,30 @@ declare global {
         } | null;
     }
 
+    // PostsMap
+    type PostsMap = {
+      [key: string]: Post
+    }
+    interface Post {
+      id: string;
+      title: string;
+      slug: string;
+      uri: string;
+      content: string;
+      date: string;
+      featuredImage: {
+        node:{
+            sourceUrl: string;
+            altText: string;
+            mediaDetails: {
+              width: number;
+              height: number;
+            }
+        }
+      } | null,
+      nextPostSlug: string;
+    }
+
     // ProjectsMap
     type ProjectsMap = {
         [key: string]:Project;
@@ -64,6 +88,10 @@ declare global {
       portfolioPageMedia: ProjectMedia[];
     }
     
+
+
+
+
     // MenuItems
     type MenuItems = {
         edges: MenuEdge[]

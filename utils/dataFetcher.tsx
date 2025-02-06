@@ -9,13 +9,11 @@ import { ALL_DATA } from "@/graphql/queries"; // Import the query
 
 
 // Define interfaces for the data
-//
- 
-
 
 
 let projectsMap: ProjectsMap;
 let pagesMap: PagesMap;
+let postsMap: PostsMap;
 let mainMenuItems: MenuItems | {};
 let socialMenuItems: MenuItems | {};
  
@@ -78,40 +76,50 @@ export async function fetchData() {
 
         // logDev("----------------------------------------- currentDateTime ap: ", data.currentDateTime);
 
-        // Transform projects into a map with `nextProjectSlug`
-        projectsMap = data.projects.edges.reduce(
-            (acc: Record<string, Project>, edge: ProjectWithNode, index: number, edges: ProjectWithNode[]) => {
-            const slug = edge.node.slug;
-            const nextSlug = edges[(index + 1) % edges.length].node.slug;
-            acc[slug] = {
-                ...edge.node,
-                nextProjectSlug: nextSlug,
-            };
-            return acc;
-        }, {});
-    
-        
-
         // Transform pagesMap
         pagesMap = data.pages.nodes.reduce((acc: Record<string, Page>, node: Page) => {
             acc[node.slug] = node;
             return acc;
         }, {});
 
+
+        // Transform posts into a map with `nextPostSlug`
+        postsMap = data.posts.nodes.reduce((acc: Record<string, Post>, node: Post, index: number, nodes: Post[]) => {
+            const slug = node.slug;
+            const nextSlug = nodes[(index + 1) % nodes.length].slug;
+            acc[slug] = {
+              ...node,
+              nextPostSlug: nextSlug,
+          };
+            return acc;
+        }, {});
        
+        // Transform projects into a map with `nextProjectSlug`
+        projectsMap = data.projects.edges.reduce(
+          (acc: Record<string, Project>, edge: ProjectWithNode, index: number, edges: ProjectWithNode[]) => {
+          const slug = edge.node.slug;
+          const nextSlug = edges[(index + 1) % edges.length].node.slug;
+          acc[slug] = {
+              ...edge.node,
+              nextProjectSlug: nextSlug,
+          };
+          return acc;
+        }, {});
+          
 
         mainMenuItems = data.mainMenuItems;
 
         socialMenuItems = data.socialMenuItems;
  
-        const finalData = { mainMenuItems, socialMenuItems, projectsMap, pagesMap }
+        const finalData = { mainMenuItems, socialMenuItems, projectsMap, pagesMap, postsMap }
+        // logDev('---> postsMap ---> ', postsMap);
         // logDev('---> finalData ---> ', finalData);
         return finalData;
 
     } catch (error) {
 
         console.error("Error fetching data:", error);
-        return { mainMenuItems: {}, socialMenuItems: {}, projectsMap: {}, pagesMap: {} };
+        return { mainMenuItems: {}, socialMenuItems: {}, projectsMap: {}, pagesMap: {}, postsMap: {} };
 
     }
   }

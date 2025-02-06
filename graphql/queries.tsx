@@ -45,6 +45,26 @@ export const ALL_DATA = gql`
         }
       }
     }
+    posts(where: { status: PUBLISH }, first: 12) {
+      nodes {
+        id
+        title
+        slug
+        uri
+        content
+        date
+        featuredImage{
+          node{
+            sourceUrl
+            altText
+            mediaDetails{
+              width
+              height
+            }
+          }
+        }
+      }
+    }
     projects(where: { orderby: { field: MENU_ORDER, order: ASC } }, first: 100) {
       edges {
         node {
