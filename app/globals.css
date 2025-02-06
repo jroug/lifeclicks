@@ -542,3 +542,7 @@ form .MuiFormControl-root{
   max-height: 100px; /* A value larger than the maximum height of your content */
 }
 
+
+.post-content-wrapper p{
+  margin-bottom: 20px;
+}

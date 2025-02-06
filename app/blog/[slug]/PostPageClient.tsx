@@ -73,7 +73,7 @@ const ProjectPageClient: React.FC<PostPageClientProps> = ({
                   priority={true}
               />
             </div>
-            <div>{postContent ? parse(postContent) : '' }</div>
+            <div className="post-content-wrapper" >{postContent ? parse(postContent) : '' }</div>
             <div className="flex w-full justify-center pt-[40px]"><Link href={"/blog/" + nextPostSlug} className="underline" >NEXT ARTICLE</Link></div>
 
         </div>
