@@ -58,7 +58,7 @@ const BlogPageClient: React.FC<BlogPageClientProps> = ({ pagesMap, postsMap }) =
                                 >
                                     <div className="flex w-full justify-center pb-[20px]">
                                     <Image
-                                        className="h-full w-auto"
+                                        className="h-full w-full object-cover max-h-[300px]"
                                         src={post.featuredImage?.node.sourceUrl || ""}
                                         alt={post.featuredImage?.node.altText || post.title || ""}
                                         width={post.featuredImage?.node.mediaDetails.width || undefined}
