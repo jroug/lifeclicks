@@ -43,20 +43,20 @@ const BlogPageClient: React.FC<BlogPageClientProps> = ({ pagesMap, postsMap }) =
             variants={contactVariants}
             transition={pageTransition}
         >
-            <main className="flex items-center justify-center bg-gray-100">
+            <main className="flex items-center justify-center bg-gray-100 px-[30px]">
                 <div className="mt-[100px] xl:mb-[100px] w-full max-w-6xl">
                     <h1 className="mx-5 md:mx-auto text-[40px] md:text-[80px] font-bold text-left mb-10 font-cormorant_garamond uppercase font-light">
                         {blogTitle}
                     </h1>
-                    <div className="blog md:mx-auto uppercase font-montserrat pt-5 pb-16 text-sm">
-                        <div className="grid grid-cols-2 w-full">
+                    <div className="blog mx-auto uppercase font-montserrat pt-5 pb-16 text-sm">
+                        <div className="grid md:grid-cols-2 w-full">
                             {Object.entries(postsData).map(([key, post], index) => (
                                 <Link 
                                     href={ "/blog" + post.uri } 
                                     key={key} 
-                                    className={`border  flex flex-col items-center text-center pr-[80px] pb-[40px] ${index % 2 === 1 ? "pt-[80px]" : ""}`}
+                                    className={`border flex flex-col items-center text-center md:pr-[80px] pb-[40px] ${index % 2 === 1 ? "md:pt-[80px]" : ""}`}
                                 >
-                                    <div className="flex w-full justify-center pb-[40px]">
+                                    <div className="flex w-full justify-center pb-[20px]">
                                     <Image
                                         className="h-full w-auto"
                                         src={post.featuredImage?.node.sourceUrl || ""}
