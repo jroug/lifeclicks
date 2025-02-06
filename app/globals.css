@@ -546,3 +546,8 @@ form .MuiFormControl-root{
 .post-content-wrapper p{
   margin-bottom: 20px;
 }
+
+.post-content-wrapper .wp-block-list li {
+  list-style-type: disc;
+  margin-bottom: 20px;
+}
