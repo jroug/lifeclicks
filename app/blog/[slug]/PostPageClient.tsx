@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import parse from 'html-react-parser';
-import { logDev } from "@/utils/logDev";
+// import { logDev } from "@/utils/logDev";
 import Link from "next/link";
 import Image from "next/image";
 import { useGlobalState } from "@/context/PageAnimatePresence";
@@ -24,9 +25,19 @@ const ProjectPageClient: React.FC<PostPageClientProps> = ({
   // postPageData,
 }) => {
 
+  const router = useRouter();
+
   const { thisIsTheFirstLoad, postsMap } = useGlobalState();
 
   const postPageData = postsMap;
+
+  useEffect(() => {
+    if (!postPageData[slug]) {
+      router.replace("/404");
+    }
+  }, [postPageData, router, slug]);
+
+  if (!postPageData[slug]) return null;
 
   // Destructure project data
   const {

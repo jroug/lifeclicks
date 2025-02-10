@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -30,6 +31,7 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
 }) => {
 
  
+  const router = useRouter();
 
   const { thisIsTheFirstLoad, projectsMap } = useGlobalState();
 
@@ -44,6 +46,14 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
   const handleSlideChange = (swiper: SwiperType) => {
     setCurrentSlide(swiper.activeIndex + 1);
   };
+
+  useEffect(() => {
+    if (!projectPageData[slug]) {
+      router.replace("/404");
+    }
+  }, [projectPageData, router, slug]);
+
+  if (!projectPageData[slug]) return null;
 
   // Destructure project data
   const {
