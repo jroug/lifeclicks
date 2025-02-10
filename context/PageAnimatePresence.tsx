@@ -6,11 +6,11 @@ import { AnimatePresence, motion } from 'framer-motion'
 import FrozenRoute from './FrozenRoute'
 import Footer from '@/components/Footer'
 import { createContext, useContext, useState, useEffect } from "react";
-
+import { logDev } from '@/utils/logDev'
 
 interface GlobalContextProps {
-  isFirstLoad: boolean;
-  setIsFirstLoad: (value: boolean) => void;
+  thisIsTheFirstLoad: boolean;
+  setThisIsTheFirstLoad: (value: boolean) => void;
 }
 
 
@@ -25,7 +25,7 @@ const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
 
 const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children, socialMenuData }) => {
 
-  const [isFirstLoad, setIsFirstLoad] = useState<boolean>(true);
+  const [thisIsTheFirstLoad, setThisIsTheFirstLoad] = useState<boolean>(true);
 
   const pathname = usePathname()
   const generalVariants =  {
@@ -40,21 +40,16 @@ const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children, soc
   }
 
   useEffect(() => {
-    if (sessionStorage.getItem("hasLoadedBefore")) {
-      setIsFirstLoad(false);
-    } else {
-      sessionStorage.setItem("hasLoadedBefore", "true");
-      setIsFirstLoad(true);
-    }
+    logDev('render: ', pathname);
+    // this runs after the useEffect of all its children -> so it runs last
+    setThisIsTheFirstLoad(false)
   }, []);
   
   return (
     <AnimatePresence mode="popLayout" >
-        <motion.div key={pathname} initial="initial" animate="enter" exit="exit" variants={generalVariants} transition={pageTransition} 
-        className="outer-motion-div "
-        >
+        <motion.div key={pathname} initial="initial" animate="enter" exit="exit" variants={generalVariants} transition={pageTransition} className="outer-motion-div" >
           <FrozenRoute>
-              <GlobalContext.Provider value={{ isFirstLoad, setIsFirstLoad }}>
+              <GlobalContext.Provider value={{ thisIsTheFirstLoad, setThisIsTheFirstLoad }}>
                   {children}
               </GlobalContext.Provider>
           </FrozenRoute>

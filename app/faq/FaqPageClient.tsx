@@ -2,7 +2,10 @@
 
 import { motion } from 'framer-motion';
 import parse, { DOMNode } from 'html-react-parser';
-// import { useSiteData } from '@/context/SiteDataContext';
+import { useGlobalState } from "@/context/PageAnimatePresence";
+import { firstLoadVariants }  from "@/utils/transitionConstants";
+import { pageTransition }  from "@/utils/transitionConstants";
+import { generalVariants }  from "@/utils/transitionConstants";
 
 interface FaqItem {
     question: string;
@@ -16,6 +19,8 @@ interface FaqItem {
   }
 
 const FaqPageClient: React.FC<FaqPageClientProps> = ({ pagesMap }) => {
+
+    const { thisIsTheFirstLoad } = useGlobalState();
 
     // const data = useSiteData();
     const pageFaqData = pagesMap['faq'];
@@ -82,23 +87,12 @@ const FaqPageClient: React.FC<FaqPageClientProps> = ({ pagesMap }) => {
         currentFaqItem.classList.toggle('open');
     };
 
-    const contactVariants = {
-        initial: { x: 200 },
-        enter: { x: 0 },
-        exit: { x: 200 },
-    };
-
-    const pageTransition = {
-        duration: 0.8,
-        ease: 'easeInOut',
-    };
-
     return (
         <motion.div
             initial="initial"
             animate="enter"
             exit="exit"
-            variants={contactVariants}
+            variants={thisIsTheFirstLoad ? firstLoadVariants : generalVariants}
             transition={pageTransition}
         >
             <main className="custom-contact-us-height flex items-center justify-center bg-gray-100">

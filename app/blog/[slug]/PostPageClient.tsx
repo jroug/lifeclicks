@@ -6,6 +6,11 @@ import parse from 'html-react-parser';
 import { logDev } from "@/utils/logDev";
 import Link from "next/link";
 import Image from "next/image";
+import { useGlobalState } from "@/context/PageAnimatePresence";
+import { firstLoadVariants }  from "@/utils/transitionConstants";
+import { pageTransition }  from "@/utils/transitionConstants";
+import { generalVariants }  from "@/utils/transitionConstants";
+
 
 // Props interface
 interface PostPageClientProps {
@@ -19,16 +24,9 @@ const ProjectPageClient: React.FC<PostPageClientProps> = ({
   postPageData,
 }) => {
 
-  const projectVariants = {
-    initial: { x: 200 },
-    enter: { x: 0 },
-    exit: { x: 200 },
-  };
+  const { thisIsTheFirstLoad } = useGlobalState();
 
-  const pageTransition = {
-    duration: 0.8,
-    ease: "easeInOut",
-  };
+ 
 
   // Destructure project data
   const {
@@ -47,7 +45,7 @@ const ProjectPageClient: React.FC<PostPageClientProps> = ({
       initial="initial"
       animate="enter"
       exit="exit"
-      variants={projectVariants}
+      variants={thisIsTheFirstLoad ? firstLoadVariants : generalVariants}
       transition={pageTransition}
     >
     <main className="flex items-center justify-center bg-gray-100">

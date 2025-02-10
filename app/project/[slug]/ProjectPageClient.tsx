@@ -7,6 +7,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
 import { FreeMode, Pagination, Mousewheel } from "swiper/modules";
 import { motion } from "framer-motion";
+import poster from '@/public/images/loader-video.png'; // Adjust the path
+import { useGlobalState } from "@/context/PageAnimatePresence";
+import { firstLoadVariants }  from "@/utils/transitionConstants";
+import { pageTransition }  from "@/utils/transitionConstants";
+import { generalVariants }  from "@/utils/transitionConstants";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
@@ -23,20 +28,14 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
   slug,
   projectPageData,
 }) => {
+
+  const { thisIsTheFirstLoad } = useGlobalState();
+
   const [currentSlide, setCurrentSlide] = useState<number>(1);
 
   const formatNumber = (number: number) => number.toString().padStart(2, "0");
 
-  const projectVariants = {
-    initial: { x: 200 },
-    enter: { x: 0 },
-    exit: { x: 200 },
-  };
-
-  const pageTransition = {
-    duration: 0.8,
-    ease: "easeInOut",
-  };
+ 
 
   const handleSlideChange = (swiper: SwiperType) => {
     setCurrentSlide(swiper.activeIndex + 1);
@@ -58,7 +57,7 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
       initial="initial"
       animate="enter"
       exit="exit"
-      variants={projectVariants}
+      variants={thisIsTheFirstLoad ? firstLoadVariants : generalVariants}
       transition={pageTransition}
     >
       <main className="relative flex flex-col items-center justify-center custom-slider-height">
@@ -104,6 +103,8 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover object-top"
                     priority={true}
+                    placeholder='blur'
+                    blurDataURL={poster.src}
                   />
                 )}
               </div>
@@ -125,6 +126,8 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
                     width={media.fullWidth || undefined}
                     height={media.fullHeight || undefined}
                     priority={true}
+                    placeholder='blur'
+                    blurDataURL={poster.src}
                   />
                 </div>
               </SwiperSlide>

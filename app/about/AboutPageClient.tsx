@@ -5,7 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import parse from 'html-react-parser';
-
+import { useGlobalState } from "@/context/PageAnimatePresence";
+import { firstLoadVariants }  from "@/utils/transitionConstants";
+import { pageTransition }  from "@/utils/transitionConstants";
+import { generalVariants }  from "@/utils/transitionConstants";
 
 // import { logDev } from '@/utils/logDev';
 // import { useSiteData } from '@/context/SiteDataContext';
@@ -18,23 +21,17 @@ interface AboutPageClientProps {
 
 const AboutPageClient: React.FC<AboutPageClientProps> = ({ pagesMap }) => {
 
+    const { thisIsTheFirstLoad } = useGlobalState();
+
     // const data = useSiteData();
     // const pageAboutData = data.pagesMap['about'];
     const pageAboutData = pagesMap['about'];
+    
  
-    const aboutVariants = {
-        initial: { x: +200 },
-        enter: { x: 0 },
-        exit: { x: +200 },
-    }
-    const pageTransition = {
-        duration: 0.8,
-        ease: "easeInOut",
-    }
 
     return (
         <>
-            <motion.div initial="initial" animate="enter" exit="exit" variants={aboutVariants} transition={pageTransition} >
+            <motion.div initial="initial" animate="enter" exit="exit" variants={thisIsTheFirstLoad ? firstLoadVariants : generalVariants} transition={pageTransition} >
                 <main id="about-main" className="bg-black text-white" >
                     <div className="grid md:grid-cols-[90%,10%] ">
                         <div id="about-info-wrap" className="flex flex-row" >

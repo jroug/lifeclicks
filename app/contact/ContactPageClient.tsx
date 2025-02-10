@@ -9,7 +9,10 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { motion } from 'framer-motion';
 import parse from 'html-react-parser';
-// import { useSiteData } from '@/context/SiteDataContext';
+import { useGlobalState } from "@/context/PageAnimatePresence";
+import { firstLoadVariants }  from "@/utils/transitionConstants";
+import { pageTransition }  from "@/utils/transitionConstants";
+import { generalVariants }  from "@/utils/transitionConstants";
 
 
 // import { validateName } from "@/utils/validations";
@@ -75,6 +78,8 @@ interface FormData {
 }
 
 const ContactPageClient: React.FC<ContactPageClientProps> = ({ pagesMap }) => {
+
+  const { thisIsTheFirstLoad } = useGlobalState();
 
   const pageContactData = pagesMap['contact'];
   // const data = useSiteData();
@@ -176,19 +181,10 @@ const ContactPageClient: React.FC<ContactPageClientProps> = ({ pagesMap }) => {
     return false;
     
   };
-
-  const contactVariants ={
-      initial: { x: +200 },
-      enter: { x: 0 },
-      exit: { x: +200 },
-  }
-  const pageTransition = {
-      duration: 0.8,
-      ease: "easeInOut",
-  }
+ 
 
   return (
-    <motion.div initial="initial" animate="enter" exit="exit" variants={contactVariants} transition={pageTransition} >
+    <motion.div initial="initial" animate="enter" exit="exit" variants={thisIsTheFirstLoad ? firstLoadVariants : generalVariants} transition={pageTransition} >
       <main className="custom-contact-us-height flex items-center justify-center bg-gray-100">
         <div className="mt-[100px] xl:mb-[100px] w-full max-w-6xl">
           <h1 className="mx-5 md:mx-auto text-[40px] md:text-[80px] font-bold text-left sm:mb-10 font-cormorant_garamond uppercase font-light">{pageContactData?.title}</h1>

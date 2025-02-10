@@ -1,33 +1,24 @@
 "use client";
 
+
+import { useEffect } from "react";
 import { useGlobalState } from "@/context/PageAnimatePresence";
 import SlideshowImage from "../components/SlideshowImage";
 import { motion } from "framer-motion";
-// import { logDev } from "@/utils/logDev";
+import { logDev } from "@/utils/logDev";
+import { firstLoadVariants }  from "@/utils/transitionConstants";
+import { pageTransition }  from "@/utils/transitionConstants";
+import { homeVariants }  from "@/utils/transitionConstants";
+
+
 
 interface HomePageClientProps {
   homePageProjectData: ProjectsMap;
 }
 
 export default function HomePageClient({ homePageProjectData }: HomePageClientProps) {
-  const { isFirstLoad } = useGlobalState();
 
-  const firstVariants = {
-    initial: { x: 0, y: 0, scale: 1 },
-    enter: { x: 0, y: 0, scale: 1 },
-    exit: { x: -200, y: 0, scale: 1 },
-  };
-
-  const homeVariants = {
-    initial: { x: -200, y: 0 },
-    enter: { x: 0, y: 0 },
-    exit: { x: -200, y: 0 },
-  };
-
-  const pageTransition = {
-    duration: 0.8,
-    ease: "easeInOut",
-  };
+  const { thisIsTheFirstLoad, setThisIsTheFirstLoad } = useGlobalState();
 
 
  
@@ -36,12 +27,19 @@ export default function HomePageClient({ homePageProjectData }: HomePageClientPr
   const modulo3 = homePageProjectDataLength % 3;
   const modulo2 = homePageProjectDataLength % 2;
 
+
+  useEffect(() => {
+      logDev('renderHome');
+      setThisIsTheFirstLoad(false);
+  }, []); // Runs every time the pathname changes
+
+
   return (
     <motion.div
       initial="initial"
       animate="enter"
       exit="exit"
-      variants={isFirstLoad ? firstVariants : homeVariants}
+      variants={thisIsTheFirstLoad ? firstLoadVariants : homeVariants}
       transition={pageTransition}
       key="home"
     >

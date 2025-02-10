@@ -36,41 +36,45 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
 
   return (
     <Link href={uri} className="w-full h-full relative group homeslide" scroll={false}>
-      <Swiper
-        modules={[Autoplay, EffectFade]}
-        slidesPerView={1}
-        effect="fade"
-        loop={ !mediaSources[0].postMimeType.startsWith('video') }
-        className="w-full h-full"
-        onSwiper={(swiper) => (swiperRef.current = swiper)} // Capture the Swiper instance
-      >
-        {mediaSources.map((media, index) => (
-          <SwiperSlide key={`slide-${index}`}>
-            {media.postMimeType.startsWith('video') ? (
-              <video
-                src={media.postExcerpt} // Video source sent to postExcerpt due to bug in GraphQL field
-                className="w-full h-full object-cover aspect-[74/97]"
-                autoPlay
-                loop
-                muted
-                playsInline
-                poster={poster.src}
-              />
-            ) : (
-               <Image
-                    className="w-full h-full object-cover aspect-[74/97]"
-                    src={media.fullFileUrl || "" }
-                    alt={title || ""}
-                    width={media.fullWidth || undefined}
-                    height={media.fullHeight || undefined}
-                    priority={true}
-                    placeholder='blur'
-                    blurDataURL={poster.src}
-                />
-            )}
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className="w-full h-full" >
+        {
+            mediaSources[0].postMimeType.startsWith('video') 
+              ? 
+                  <video
+                      src={mediaSources[0].postExcerpt} // Video source sent to postExcerpt due to bug in GraphQL field
+                      className="w-full h-full object-cover aspect-[74/97]"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      poster={poster.src}
+                  />
+              :
+                  <Swiper
+                    modules={[Autoplay, EffectFade]}
+                    slidesPerView={1}
+                    effect="fade"
+                    loop={ false }
+                    className="w-full h-full"
+                    onSwiper={(swiper) => (swiperRef.current = swiper)} // Capture the Swiper instance
+                  >
+                        {mediaSources.map((media, index) => (
+                          <SwiperSlide key={`slide-${index}`}>
+                              <Image
+                                    className="w-full h-full object-cover aspect-[74/97]"
+                                    src={media.fullFileUrl || "" }
+                                    alt={title || ""}
+                                    width={media.fullWidth || undefined}
+                                    height={media.fullHeight || undefined}
+                                    priority={true}
+                                    placeholder='blur'
+                                    blurDataURL={poster.src}
+                                />
+                          </SwiperSlide>
+                        ))}
+                  </Swiper>
+          }
+      </div>
       <div
         className="hoverLayer flex flex-col items-center justify-center absolute w-full h-full z-10 bg-[#00000091] text-[#ffffff] top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity"
         onMouseEnter={handleMouseEnter}

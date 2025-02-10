@@ -5,7 +5,10 @@ import { motion } from 'framer-motion';
 // import { logDev } from "@/utils/logDev";
 import Link from 'next/link';
 import Image from 'next/image';
-// import { useSiteData } from '@/context/SiteDataContext';
+import { useGlobalState } from "@/context/PageAnimatePresence";
+import { firstLoadVariants }  from "@/utils/transitionConstants";
+import { pageTransition }  from "@/utils/transitionConstants";
+import { generalVariants }  from "@/utils/transitionConstants";
 
 
 // PagesMap declarations end
@@ -16,31 +19,24 @@ interface BlogPageClientProps {
 
 const BlogPageClient: React.FC<BlogPageClientProps> = ({ pagesMap, postsMap }) => {
 
+    const { thisIsTheFirstLoad } = useGlobalState();
+
     // const data = useSiteData();
     const pageBlogData = pagesMap['blog'];
     const postsData = postsMap;
+    
     // logDev( postsData );
 
     // Ensure the FAQ data exists and provide a fallback to prevent errors
     const blogTitle = pageBlogData.title;
-  
-    const contactVariants = {
-        initial: { x: 200 },
-        enter: { x: 0 },
-        exit: { x: 200 },
-    };
 
-    const pageTransition = {
-        duration: 0.8,
-        ease: 'easeInOut',
-    };
-
+ 
     return (
         <motion.div
             initial="initial"
             animate="enter"
             exit="exit"
-            variants={contactVariants}
+            variants={thisIsTheFirstLoad ? firstLoadVariants : generalVariants}
             transition={pageTransition}
         >
             <main className="flex items-center justify-center bg-gray-100 px-[30px]">
