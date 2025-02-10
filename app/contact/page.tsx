@@ -10,7 +10,7 @@ logDev('fetchData - Contact 2');
 
 // Metadata for the application
 export const metadata: Metadata = {
-    title: ('contact' in pagesMap) ? buildHeadTitle(pagesMap['contact'].title) : "404"
+    title: ('contact' in pagesMap) ? buildHeadTitle('other', pagesMap['contact'].title) : "404"
 };
 
 export default function Contact() {

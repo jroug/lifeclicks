@@ -19,7 +19,7 @@ export async function generateMetadata( { params }: Props ): Promise<Metadata> {
 
 
   return {
-    title: buildHeadTitle(slug)
+    title: buildHeadTitle('blog', slug)
     // title: ( slug in postsMap ) && slug ? buildHeadTitle(postsMap[slug].title) : '404'
   };
 

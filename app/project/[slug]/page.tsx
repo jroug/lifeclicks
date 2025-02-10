@@ -19,7 +19,7 @@ export async function generateMetadata( { params }: Props ): Promise<Metadata> {
 
 
   return {
-    title: buildHeadTitle(slug)
+    title: buildHeadTitle('project', slug)
     // title: ( slug in projectsMap ) && slug ? buildHeadTitle(projectsMap[slug].title) : '404'
   };
 

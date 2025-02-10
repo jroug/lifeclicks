@@ -10,7 +10,7 @@ logDev('fetchData - Home 2');
 
 // Metadata for the application
 export const metadata: Metadata = {
-  title: ('portfolio' in pagesMap) ? buildHeadTitle(pagesMap['portfolio'].title) : "404"
+  title: ('portfolio' in pagesMap) ? buildHeadTitle('other', pagesMap['portfolio'].title) : "404"
 };
 
 

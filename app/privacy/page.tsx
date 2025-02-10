@@ -10,7 +10,7 @@ logDev('fetchData - Privacy 2');
 
 // Metadata for the application
 export const metadata: Metadata = {
-     title: ('privacy' in pagesMap) ? buildHeadTitle(pagesMap['privacy'].title) : "404"
+     title: ('privacy' in pagesMap) ? buildHeadTitle('other', pagesMap['privacy'].title) : "404"
 };
 
 

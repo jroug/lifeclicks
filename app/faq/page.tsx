@@ -10,7 +10,7 @@ logDev('fetchData - Faq 2');
 
 // Metadata for the application
 export const metadata: Metadata = {
-  title: ('faq' in pagesMap) ? buildHeadTitle(pagesMap['faq'].title) : "404"
+  title: ('faq' in pagesMap) ? buildHeadTitle('other', pagesMap['faq'].title) : "404"
 };
 
 export default function Faq() {

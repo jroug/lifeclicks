@@ -1,7 +1,11 @@
 import { convertToTitleCase } from "@/utils/convertToTitleCase";
 
-export const buildHeadTitle = (str: string): string  => {
-    let s = str.replaceAll('-',' ');
+export const buildHeadTitle = (frm: string, str: string  ): string  => {
+    let s = '';
+    if (frm === 'project' )
+         s = str.replaceAll('-',' & ');
+    else
+        s = str.replaceAll('-',' ');
     let s2 = s.replaceAll('  ',' ');
-    return 'Lifeclicks Studio - ' + convertToTitleCase(s);
+    return 'Lifeclicks Studio - ' + convertToTitleCase(s2);
 } 
