@@ -68,7 +68,7 @@ export async function fetchData() {
             query: ALL_DATA,
             context: {
                 fetchOptions: {
-                  next: { revalidate: 6000 },
+                  next: { revalidate: 3600 * 24 }, // one day
                 },
             },
         });

@@ -49,7 +49,7 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
             {media.postMimeType.startsWith('video') ? (
               <video
                 src={media.postExcerpt} // Video source sent to postExcerpt due to bug in GraphQL field
-                className="w-full h-full object-cover aspect-[74/93]"
+                className="w-full h-full object-cover aspect-[74/97]"
                 autoPlay
                 loop
                 muted
@@ -59,7 +59,7 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
               <img
                 src={media.fullFileUrl}
                 alt={title}
-                className="w-full h-full object-cover aspect-[74/93]"
+                className="w-full h-full object-cover aspect-[74/97]"
               />
             )}
           </SwiperSlide>
