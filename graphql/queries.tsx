@@ -78,6 +78,8 @@ export const ALL_DATA = gql`
             homepageMedia {
               id
               fullFileUrl
+              fullWidth
+              fullHeight
               postMimeType
               postExcerpt
             }

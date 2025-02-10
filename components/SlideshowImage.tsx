@@ -8,7 +8,7 @@ import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 import { useRef } from 'react';
 import type { Swiper as SwiperInstance } from 'swiper';
-
+import Image from 'next/image';
  
 
 interface SlideshowImageProps {
@@ -56,11 +56,14 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
                 playsInline
               />
             ) : (
-              <img
-                src={media.fullFileUrl}
-                alt={title}
-                className="w-full h-full object-cover aspect-[74/97]"
-              />
+               <Image
+                    className="w-full h-full object-cover aspect-[74/97]"
+                    src={media.fullFileUrl || "" }
+                    alt={title || ""}
+                    width={media.fullWidth || undefined}
+                    height={media.fullHeight || undefined}
+                    priority={true}
+                />
             )}
           </SwiperSlide>
         ))}
