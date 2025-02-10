@@ -9,20 +9,20 @@ type Props = {
 }
  
 // Metadata function to dynamically set metadata based on params
-export async function generateMetadata( { params }: Props ): Promise<Metadata> {
+// export async function generateMetadata( { params }: Props ): Promise<Metadata> {
 
-  const slug = (await params).slug;
+//   const slug = (await params).slug;
   
-  logDev("fetchData - Generating Metadata 1 : " + slug);
-  const { postsMap } = await fetchData();
-  logDev("fetchData - Generating Metadata 2 : " + slug);
+//   logDev("fetchData - Generating Metadata 1 : " + slug);
+//   const { postsMap } = await fetchData();
+//   logDev("fetchData - Generating Metadata 2 : " + slug);
 
 
-  return {
-    title: ( slug in postsMap ) && slug ? buildHeadTitle(postsMap[slug].title) : '404'
-  };
+//   return {
+//     title: ( slug in postsMap ) && slug ? buildHeadTitle(postsMap[slug].title) : '404'
+//   };
 
-}
+// }
 
 
  
