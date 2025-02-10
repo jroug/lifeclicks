@@ -125,7 +125,7 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
                     alt={media.postTitle || ""}
                     width={media.fullWidth || undefined}
                     height={media.fullHeight || undefined}
-                    priority={true}
+                    priority={false}
                     placeholder='blur'
                     blurDataURL={poster.src}
                   />

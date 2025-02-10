@@ -50,7 +50,7 @@ const BlogPageClient: React.FC<BlogPageClientProps> = ({ pagesMap, postsMap }) =
                                 <Link 
                                     href={ "/blog" + post.uri } 
                                     key={key} 
-                                    className={`border flex flex-col items-center text-center md:pr-[80px] pb-[40px] ${index % 2 === 1 ? "md:pt-[80px]" : ""}`}
+                                    className={`flex flex-col items-center text-center md:pr-[80px] pb-[40px] ${index % 2 === 1 ? "md:pt-[80px]" : ""}`}
                                 >
                                     <div className="flex w-full justify-center pb-[20px]">
                                     <Image
@@ -59,7 +59,7 @@ const BlogPageClient: React.FC<BlogPageClientProps> = ({ pagesMap, postsMap }) =
                                         alt={post.featuredImage?.node.altText || post.title || ""}
                                         width={post.featuredImage?.node.mediaDetails.width || undefined}
                                         height={post.featuredImage?.node.mediaDetails.height || undefined}
-                                        priority={true}
+                                        priority={false}
                                     />
                                     </div>
                                     <h2 className="text-lg">{post.title}</h2>
