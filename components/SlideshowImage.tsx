@@ -9,7 +9,7 @@ import 'swiper/css/effect-fade';
 import { useRef } from 'react';
 import type { Swiper as SwiperInstance } from 'swiper';
 import Image from 'next/image';
- 
+import poster from '@/public/images/loader-video.png'; // Adjust the path
 
 interface SlideshowImageProps {
   mediaSources: ProjectMedia[];
@@ -54,6 +54,7 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
                 loop
                 muted
                 playsInline
+                poster={poster.src}
               />
             ) : (
                <Image
@@ -63,8 +64,8 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
                     width={media.fullWidth || undefined}
                     height={media.fullHeight || undefined}
                     priority={true}
-                    // placeholder='blur'
-                    // blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABNklEQVR42mNgGAXUzzf/0zgTGBgYGd7evkrVjX0DxBGI1DXW3h6mBkZPwh7ivDF7////MmQAG7GVehJbN9HhrglhMgKRJGDJwRLI/wB8uLp+bmZmIlGlghEcJ7PyPZzJBvTGIEf6c7VzRxJqD4gAiMbySxUgfEHgXQHiP91qcmTpyc///9xkYGBgTAhPsChU4ML4K68hxVAQmISFBRXFCi3FfQKwPDDcEbYX4BdCLkAkhMUIUgNJzNz0/zMwnCE6R8hGakMXCguBdHwvRhFZAFS9AMkpoAdCFO/v1H0CrMwCJr4LYgxhph8iOBRmJ1AGskWiApoEkTyQKJMHRLQgL7ZGkPZHkHKVExJDWg5N7FYCGcCm1gyATMSjgljZ7mohUk7UgcP/69dcvl5ewR7HhgYGAB4Iym95Gz/iwAAAABJRU5ErkJggg==" // Small blurred image
+                    placeholder='blur'
+                    blurDataURL={poster.src}
                 />
             )}
           </SwiperSlide>
