@@ -32,10 +32,8 @@ export default async function RootLayout({
 }) {
 
   logDev('fetchData - layout.tsx 1');
-  const { mainMenuItems, socialMenuItems } = await fetchData();
+  const { mainMenuItems, socialMenuItems, projectsMap, pagesMap, postsMap } = await fetchData();
   logDev('fetchData - layout.tsx 2');
-
-
 
   return (
     <html lang="en">
@@ -67,7 +65,7 @@ export default async function RootLayout({
 
         {/* Context Providers */}
         {/* <SiteDataProvider data={{ projectsMap, pagesMap }} > */}
-          <PageAnimatePresence socialMenuData={ socialMenuItems } >
+          <PageAnimatePresence socialMenuData={ socialMenuItems } projectsMap={projectsMap} pagesMap={pagesMap} postsMap={postsMap} >
             {children}
           </PageAnimatePresence>
         {/* </SiteDataProvider> */}

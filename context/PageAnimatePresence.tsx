@@ -11,19 +11,25 @@ import { logDev } from '@/utils/logDev'
 interface GlobalContextProps {
   thisIsTheFirstLoad: boolean;
   setThisIsTheFirstLoad: (value: boolean) => void;
+  projectsMap: ProjectsMap
+  pagesMap: PagesMap
+  postsMap: PostsMap
 }
 
 
 interface PageAnimatePresenceProps {
   children: ReactNode,
   socialMenuData: MenuItems | {};
+  projectsMap: ProjectsMap
+  pagesMap: PagesMap
+  postsMap: PostsMap
 }
 
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
 
 
-const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children, socialMenuData }) => {
+const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children, socialMenuData, projectsMap, pagesMap, postsMap }) => {
 
   const [thisIsTheFirstLoad, setThisIsTheFirstLoad] = useState<boolean>(true);
 
@@ -49,7 +55,7 @@ const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children, soc
     <AnimatePresence mode="popLayout" >
         <motion.div key={pathname} initial="initial" animate="enter" exit="exit" variants={generalVariants} transition={pageTransition} className="outer-motion-div" >
           <FrozenRoute>
-              <GlobalContext.Provider value={{ thisIsTheFirstLoad, setThisIsTheFirstLoad }}>
+              <GlobalContext.Provider value={{ thisIsTheFirstLoad, setThisIsTheFirstLoad, projectsMap, pagesMap, postsMap }}>
                   {children}
               </GlobalContext.Provider>
           </FrozenRoute>

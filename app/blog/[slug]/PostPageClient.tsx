@@ -15,18 +15,18 @@ import { generalVariants }  from "@/utils/transitionConstants";
 // Props interface
 interface PostPageClientProps {
   slug:string,
-  postPageData: PostsMap;
+  // postPageData: PostsMap;
  
 }
 
 const ProjectPageClient: React.FC<PostPageClientProps> = ({
   slug,
-  postPageData,
+  // postPageData,
 }) => {
 
-  const { thisIsTheFirstLoad } = useGlobalState();
+  const { thisIsTheFirstLoad, postsMap } = useGlobalState();
 
- 
+  const postPageData = postsMap;
 
   // Destructure project data
   const {

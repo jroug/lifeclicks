@@ -30,10 +30,9 @@ export async function generateMetadata( { params }: Props ): Promise<Metadata> {
 export default async function Post({ params }: Props) {
   const slug = (await params).slug;
 
-  logDev("project data 1  " + slug);
-  const { postsMap } = await fetchData();
-  logDev("project data 2 " + slug);
+  // logDev("project data 1  " + slug);
+  // const { postsMap } = await fetchData();
+  // logDev("project data 2 " + slug);
 
-  return <PostPageClient slug={slug} postPageData={ postsMap } />;
-  
+  return <PostPageClient slug={slug} />;
 }
