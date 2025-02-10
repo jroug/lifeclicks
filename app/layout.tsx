@@ -12,7 +12,7 @@ import MainMenu from "@/components/MainMenu";
 import { fetchData } from "@/utils/dataFetcher";
 import { logDev } from "@/utils/logDev";
 
-
+ 
 
 // Utilities
 // import { logDev } from "@/utils/logDev";
@@ -34,6 +34,7 @@ export default async function RootLayout({
   logDev('fetchData - layout.tsx 1');
   const { mainMenuItems, socialMenuItems } = await fetchData();
   logDev('fetchData - layout.tsx 2');
+
 
 
   return (

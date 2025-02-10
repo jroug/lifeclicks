@@ -1,16 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useGlobalState } from "@/context/PageAnimatePresence";
 import SlideshowImage from "../components/SlideshowImage";
 import { motion } from "framer-motion";
-
+// import { logDev } from "@/utils/logDev";
 
 interface HomePageClientProps {
   homePageProjectData: ProjectsMap;
 }
 
 export default function HomePageClient({ homePageProjectData }: HomePageClientProps) {
-  const [firstLoad, setFirstLoad] = useState<boolean>(false);
+  const { isFirstLoad } = useGlobalState();
 
   const firstVariants = {
     initial: { x: 0, y: 0, scale: 1 },
@@ -29,14 +29,8 @@ export default function HomePageClient({ homePageProjectData }: HomePageClientPr
     ease: "easeInOut",
   };
 
-  useEffect(() => {
-    const firstVisit = localStorage.getItem("FIRST");
-    if (firstVisit === "true") {
-      setFirstLoad(true);
-      localStorage.setItem("FIRST", "false");
-    }
-  }, []);
 
+ 
   const homePageProjectDataLength = Object.entries(homePageProjectData).length;
   const modulo4 = homePageProjectDataLength % 4;
   const modulo3 = homePageProjectDataLength % 3;
@@ -47,7 +41,7 @@ export default function HomePageClient({ homePageProjectData }: HomePageClientPr
       initial="initial"
       animate="enter"
       exit="exit"
-      variants={firstLoad ? firstVariants : homeVariants}
+      variants={isFirstLoad ? firstVariants : homeVariants}
       transition={pageTransition}
       key="home"
     >
