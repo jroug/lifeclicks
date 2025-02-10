@@ -37,8 +37,8 @@ const ProjectPageClient: React.FC<PostPageClientProps> = ({
     nextPostSlug,
   } = postPageData[slug];
 
-  logDev('title', postTitle);
-  logDev('postContent', postContent);
+  // logDev('title', postTitle);
+  // logDev('postContent', postContent);
 
   return (
     <motion.div

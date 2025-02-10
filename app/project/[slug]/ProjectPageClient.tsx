@@ -20,16 +20,20 @@ import "swiper/css/mousewheel";
 // Props interface
 interface ProjectPageClientProps {
   slug:string,
-  projectPageData: ProjectsMap;
+  // projectPageData: ProjectsMap;
  
 }
 
 const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
   slug,
-  projectPageData,
+  // projectPageData,
 }) => {
 
-  const { thisIsTheFirstLoad } = useGlobalState();
+ 
+
+  const { thisIsTheFirstLoad, projectsMap } = useGlobalState();
+
+  const projectPageData = projectsMap;
 
   const [currentSlide, setCurrentSlide] = useState<number>(1);
 

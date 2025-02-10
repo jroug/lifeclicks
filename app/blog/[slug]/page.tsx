@@ -12,14 +12,14 @@ type Props = {
 export async function generateMetadata( { params }: Props ): Promise<Metadata> {
 
   const slug = (await params).slug;
-  
+  // logDev(postsMap);
   // logDev("fetchData - Generating Metadata 1 : " + slug);
   // const { postsMap } = await fetchData();
   // logDev("fetchData - Generating Metadata 2 : " + slug);
 
 
   return {
-    title: 'test'
+    title: buildHeadTitle(slug)
     // title: ( slug in postsMap ) && slug ? buildHeadTitle(postsMap[slug].title) : '404'
   };
 

@@ -13,13 +13,14 @@ export async function generateMetadata( { params }: Props ): Promise<Metadata> {
 
   const slug = (await params).slug;
   
-  logDev("fetchData - Generating Metadata 1 : " + slug);
-  const { projectsMap } = await fetchData();
-  logDev("fetchData - Generating Metadata 2 : " + slug);
+  // logDev("fetchData - Generating Metadata 1 : " + slug);
+  // const { projectsMap } = await fetchData();
+  // logDev("fetchData - Generating Metadata 2 : " + slug);
 
 
   return {
-    title: ( slug in projectsMap ) && slug ? buildHeadTitle(projectsMap[slug].title) : '404'
+    title: buildHeadTitle(slug)
+    // title: ( slug in projectsMap ) && slug ? buildHeadTitle(projectsMap[slug].title) : '404'
   };
 
 }
@@ -30,10 +31,10 @@ export async function generateMetadata( { params }: Props ): Promise<Metadata> {
 export default async function Project({ params }: Props) {
   const slug = (await params).slug;
 
-  logDev("project data 1  " + slug);
-  const { projectsMap } = await fetchData();
-  logDev("project data 2 " + slug);
+  // logDev("project data 1  " + slug);
+  // const { projectsMap } = await fetchData();
+  // logDev("project data 2 " + slug);
 
-  return <ProjectPageClient slug={slug} projectPageData={ projectsMap } />;
+  return <ProjectPageClient slug={slug} />;
   
 }
