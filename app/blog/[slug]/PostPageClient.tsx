@@ -51,7 +51,7 @@ const ProjectPageClient: React.FC<PostPageClientProps> = ({
       transition={pageTransition}
     >
     <main className="flex items-center justify-center bg-gray-100">
-        <div className="mt-[100px] xl:mb-[100px] w-full max-w-6xl px-[30px] md:px-0">
+        <div className="mt-[100px] xl:mb-[100px] w-full max-w-6xl px-[30px] lg:px-0">
           <div className="flex w-full justify-center pb-[100px]"><Link href={"/blog"}>BACK TO ALL ARTICLE</Link></div>
             <h1 className="flex justify-center mx-5 pb-[40px] md:mx-auto text-[20px] md:text-[40px] font-bold text-left font-cormorant_garamond uppercase font-light">
                 {postTitle}
