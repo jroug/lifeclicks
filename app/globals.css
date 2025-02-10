@@ -551,3 +551,8 @@ form .MuiFormControl-root{
   list-style-type: disc;
   margin-bottom: 20px;
 }
+
+
+.contact-content p{
+  margin-bottom:20px;
+}
