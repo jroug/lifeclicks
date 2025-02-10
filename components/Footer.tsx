@@ -26,15 +26,15 @@ const Footer: React.FC<MenuProps> = ({ socialMenuData }) => {
                         <p className="pb-4" >
                             
                             <span className="underline-effect">
-                                <Link href={ socialMenuItems.edges[0].node.uri } target={ socialMenuItems.edges[0].node.target } className="uppercase font-bold text-footer" scroll={false}>{ socialMenuItems.edges[0].node.label }</Link> 
+                                <Link href={ socialMenuItems.edges[0].node.uri } target={ socialMenuItems.edges[0].node.target } className="uppercase text-[12px]" scroll={false}>{ socialMenuItems.edges[0].node.label }</Link> 
                             </span>
                             <span> | </span>
                             <span className="underline-effect"> 
-                                <Link href={ socialMenuItems.edges[1].node.uri } target={ socialMenuItems.edges[1].node.target } className="uppercase font-bold text-footer" scroll={false}>{ socialMenuItems.edges[1].node.label }</Link> 
+                                <Link href={ socialMenuItems.edges[1].node.uri } target={ socialMenuItems.edges[1].node.target } className="uppercase  text-[12px]" scroll={false}>{ socialMenuItems.edges[1].node.label }</Link> 
                             </span>
                             <span> | </span>
                             <span className="underline-effect">
-                                <Link href={ socialMenuItems.edges[2].node.uri } target={ socialMenuItems.edges[2].node.target } className="uppercase font-bold text-footer" scroll={false}>{ socialMenuItems.edges[2].node.label }</Link>
+                                <Link href={ socialMenuItems.edges[2].node.uri } target={ socialMenuItems.edges[2].node.target } className="uppercase  text-[12px]" scroll={false}>{ socialMenuItems.edges[2].node.label }</Link>
                             </span>
                         </p>
                     </div>
