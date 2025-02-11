@@ -11,25 +11,27 @@ import { logDev } from '@/utils/logDev'
 interface GlobalContextProps {
   thisIsTheFirstLoad: boolean;
   setThisIsTheFirstLoad: (value: boolean) => void;
-  projectsMap: ProjectsMap
-  pagesMap: PagesMap
-  postsMap: PostsMap
+  projectsMap: ProjectsMap;
+  pagesMap: PagesMap;
+  postsMap: PostsMap;
+  videosMap: VideosMap;
 }
 
 
 interface PageAnimatePresenceProps {
-  children: ReactNode,
+  children: ReactNode;
   socialMenuData: MenuItems | {};
-  projectsMap: ProjectsMap
-  pagesMap: PagesMap
-  postsMap: PostsMap
+  projectsMap: ProjectsMap;
+  pagesMap: PagesMap;
+  postsMap: PostsMap;
+  videosMap: VideosMap;
 }
 
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
 
 
-const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children, socialMenuData, projectsMap, pagesMap, postsMap }) => {
+const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children, socialMenuData, projectsMap, pagesMap, postsMap, videosMap }) => {
 
   const [thisIsTheFirstLoad, setThisIsTheFirstLoad] = useState<boolean>(true);
 
@@ -55,7 +57,7 @@ const PageAnimatePresence: React.FC<PageAnimatePresenceProps> = ({ children, soc
     <AnimatePresence mode="popLayout" >
         <motion.div key={pathname} initial="initial" animate="enter" exit="exit" variants={generalVariants} transition={pageTransition} className="outer-motion-div" >
           <FrozenRoute>
-              <GlobalContext.Provider value={{ thisIsTheFirstLoad, setThisIsTheFirstLoad, projectsMap, pagesMap, postsMap }}>
+              <GlobalContext.Provider value={{ thisIsTheFirstLoad, setThisIsTheFirstLoad, projectsMap, pagesMap, postsMap, videosMap }}>
                   {children}
               </GlobalContext.Provider>
           </FrozenRoute>

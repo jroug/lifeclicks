@@ -5,7 +5,7 @@ import { onError } from "@apollo/client/link/error";
 // GraphQL Query
 import { ALL_DATA } from "@/graphql/queries"; // Import the query
  
-// import { logDev } from "@/utils/logDev";
+import { logDev } from "@/utils/logDev";
 
 
 // Define interfaces for the data
@@ -14,6 +14,7 @@ import { ALL_DATA } from "@/graphql/queries"; // Import the query
 let projectsMap: ProjectsMap;
 let pagesMap: PagesMap;
 let postsMap: PostsMap;
+let videosMap: VideosMap;
 let mainMenuItems: MenuItems | {};
 let socialMenuItems: MenuItems | {};
  
@@ -106,20 +107,31 @@ export async function fetchData() {
           return acc;
         }, {});
           
+        // Transform projects into a map with `nextProjectSlug`
+        videosMap = data.videos.edges.reduce(
+          (acc: Record<string, Video>, edge: VideoWithNode, index: number, edges: VideoWithNode[]) => {
+          const slug = edge.node.slug;
+          const nextSlug = edges[(index + 1) % edges.length].node.slug;
+          acc[slug] = {
+              ...edge.node,
+              nextVideoSlug: nextSlug,
+          };
+          return acc;
+        }, {});
 
         mainMenuItems = data.mainMenuItems;
 
         socialMenuItems = data.socialMenuItems;
  
-        const finalData = { mainMenuItems, socialMenuItems, projectsMap, pagesMap, postsMap }
-        // logDev('---> postsMap ---> ', postsMap);
+        const finalData = { mainMenuItems, socialMenuItems, projectsMap, pagesMap, postsMap, videosMap }
+        // logDev('---> videosMap ---> ', videosMap);
         // logDev('---> finalData ---> ', finalData);
         return finalData;
 
     } catch (error) {
 
         console.error("Error fetching data:", error);
-        return { mainMenuItems: {}, socialMenuItems: {}, projectsMap: {}, pagesMap: {}, postsMap: {} };
+        return { mainMenuItems: {}, socialMenuItems: {}, projectsMap: {}, pagesMap: {}, postsMap: {}, videosMap: {} };
 
     }
   }

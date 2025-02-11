@@ -65,6 +65,29 @@ export const ALL_DATA = gql`
         }
       }
     }
+    videos(where: { orderby: { field: MENU_ORDER, order: ASC } }, first: 100) {
+      edges {
+        node {
+          id
+          title
+          slug
+          uri
+          videosExtras {
+              vimeoId
+          }
+          featuredImage{
+          	node{
+            	sourceUrl
+            	altText
+              mediaDetails{
+                width
+                height
+              }
+          	}
+        	}
+        }
+      }
+    }
     projects(where: { orderby: { field: MENU_ORDER, order: ASC } }, first: 100) {
       edges {
         node {

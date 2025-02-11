@@ -88,8 +88,45 @@ declare global {
       portfolioPageMedia: ProjectMedia[];
     }
     
+    // VideosMap
+    type VideosMap = {
+      [key: string]:Video;
+    }
+    interface Video{
+        id: string;
+        title: string;
+        slug: string;
+        uri: string;
+        videosExtras: VideosExtras;
+        featuredImage: VideoMedia;
+        nextVideoSlug: string;
+    }
+    
+    interface VideoMedia {
+      node:{
+          sourceUrl: string;
+          altText: string;
+          mediaDetails: {
+            width: number;
+            height: number;
+          }
+      }
+    }
 
-
+    interface VideoWithNode {
+        node:{
+          id: string;
+          title: string;
+          slug: string;
+          uri: string;
+          videosExtras: VideosExtras;
+          featuredImage: VideoMedia;
+          nextVideoSlug: string;
+        }
+    }
+    interface VideosExtras {
+      vimeoId: string;
+    }
 
 
     // MenuItems
