@@ -84,6 +84,7 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
             momentumBounce: true,
           }}
           mousewheel={{
+            enabled: true,
             forceToAxis: false,
             sensitivity: 10,
             releaseOnEdges: false,
@@ -101,6 +102,7 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
                 momentumBounce: true,
               },
               mousewheel: {
+                enabled: true,
                 forceToAxis: false,
                 sensitivity: 10,
                 releaseOnEdges: false,
@@ -114,10 +116,12 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
                 momentumBounce: false,
               },
               mousewheel: {
+                enabled: true,
                 forceToAxis: true,
                 sensitivity: 10,
                 releaseOnEdges: true,
-              }
+              },
+              touchRatio:2
             },
           }}
         >
