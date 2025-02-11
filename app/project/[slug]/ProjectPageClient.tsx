@@ -113,7 +113,7 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
               freeMode: {
                 enabled: true,
                 momentum: true,
-                momentumBounce: true,
+                momentumBounce: false,
               },
               mousewheel: {
                 enabled: true,
@@ -121,8 +121,8 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
                 sensitivity: 10,
                 releaseOnEdges: true,
               },
-              touchAngle: 90,
-              touchRatio: 1.8,
+              touchAngle: 60,
+              touchRatio: 1.7,
             },
           }}
         >
