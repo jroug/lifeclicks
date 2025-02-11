@@ -121,7 +121,8 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
                 sensitivity: 10,
                 releaseOnEdges: true,
               },
-              touchRatio:2
+              touchAngle: 90,
+              touchRatio: 1.6,
             },
           }}
         >
