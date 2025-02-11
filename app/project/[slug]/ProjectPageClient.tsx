@@ -83,7 +83,6 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
           mousewheel={{
             sensitivity: 10,
           }}
-          grabCursor={true}
           className="w-full h-full"
           onSlideChange={handleSlideChange}
           breakpoints={{
