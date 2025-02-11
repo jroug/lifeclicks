@@ -115,7 +115,7 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
               },
               mousewheel: {
                 forceToAxis: true,
-                sensitivity: 2,
+                sensitivity: 10,
                 releaseOnEdges: true,
               }
             },
