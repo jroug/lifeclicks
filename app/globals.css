@@ -44,9 +44,7 @@ body {
 
 }
 
-.swiper-wrapper{
-  transition-duration: 300ms !important;
-}
+
 
 .w-half-important {
   width: 50% !important;
@@ -557,3 +555,9 @@ form .MuiFormControl-root{
 .contact-content p{
   margin-bottom:20px;
 }
+
+@media only screen and (min-width: 768px) {
+  .swiper-wrapper{
+    transition-duration: 300ms !important;
+  } 
+} 

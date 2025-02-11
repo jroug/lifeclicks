@@ -74,7 +74,7 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
       variants={thisIsTheFirstLoad ? firstLoadVariants : generalVariants}
       transition={pageTransition}
     >
-      <main className="relative flex flex-col items-center justify-center custom-slider-height">
+      <main className="project-slider relative flex flex-col items-center justify-center custom-slider-height">
         <Swiper
           modules={[FreeMode, Pagination, Mousewheel]}
           direction={"horizontal"}
