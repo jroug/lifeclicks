@@ -77,20 +77,47 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
       <main className="relative flex flex-col items-center justify-center custom-slider-height">
         <Swiper
           modules={[FreeMode, Pagination, Mousewheel]}
-          freeMode={true}
+          direction={"horizontal"}
+          freeMode={{
+            enabled: true,
+            momentum: true,
+            momentumBounce: true,
+          }}
+          mousewheel={{
+            forceToAxis: false,
+            sensitivity: 10,
+            releaseOnEdges: false,
+          }}
           spaceBetween={0}
           slidesPerView={"auto"}
-          mousewheel={{
-            sensitivity: 10,
-          }}
           className="w-full h-full"
           onSlideChange={handleSlideChange}
           breakpoints={{
             768: {
               direction: "horizontal",
+              freeMode: {
+                enabled: true,
+                momentum: true,
+                momentumBounce: true,
+              },
+              mousewheel: {
+                forceToAxis: false,
+                sensitivity: 10,
+                releaseOnEdges: false,
+              }
             },
             0: {
               direction: "vertical",
+              freeMode: {
+                enabled: true,
+                momentum: true,
+                momentumBounce: false,
+              },
+              mousewheel: {
+                forceToAxis: true,
+                sensitivity: 2,
+                releaseOnEdges: true,
+              }
             },
           }}
         >
