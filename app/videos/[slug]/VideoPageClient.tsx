@@ -64,13 +64,13 @@ const VideoPageClient: React.FC<VideoPageClientProps> = ({
       transition={pageTransition}
     >
       <main className="project-slider relative flex flex-col items-center justify-center custom-slider-height">
-            <div className="flex w-full h-full relative bg-white flex-col md:flex-row">
-              <div className="relative z-10 bg-white flex flex-col items-center justify-center h-full w-full md:w-half-important">
-                <h1 className="font-cormorant_garamond uppercase w-full text-5xl sm:text-6xl text-black text-center">
+            <div className="flex w-full h-full relative bg-white flex-col xl:flex-row">
+              <div className="relative z-10 bg-white flex flex-col items-center justify-center h-full w-full xl:w-30percent-important">
+                <h1 className="font-cormorant_garamond uppercase w-full text-5xl text-black text-center p-[20px]">
                   {projectTitle}
                 </h1>
               </div>
-              <div className="flex flex-col h-full relative w-full md:w-half-important ">
+              <div className="flex flex-col h-full relative w-full xl:w-70percent-important ">
                   <ReactPlayer
                     url={"https://vimeo.com/" + videosExtras.vimeoId }
                     width="100%"

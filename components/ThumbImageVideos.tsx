@@ -18,6 +18,9 @@ export default function ThumbImageVideos({ videoSource, title, uri }: SlideshowI
   return (
     <Link href={uri} className="w-full h-full relative group homeslide" scroll={false}>
       <div className="w-full h-full" >
+        { 
+          videoSource 
+          ?
           <Image
               className="w-full h-full object-cover aspect-[74/97]"
               src={videoSource.node.sourceUrl || ""}
@@ -28,6 +31,11 @@ export default function ThumbImageVideos({ videoSource, title, uri }: SlideshowI
               placeholder='blur'
               blurDataURL={poster.src}
           />
+          :
+          <div className="flex flex-col items-center justify-center w-full h-full">
+            <h3 className="text-[30px] pb-[60px]">VIDEO</h3>
+          </div>
+        }
       </div>
       <div className="hoverLayer flex flex-col items-center justify-center absolute w-full h-full z-10 bg-[#00000091] text-[#ffffff] top-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity">
         <h2 className="font-cormorant_garamond text-xl md:text-2xl uppercase">{title}</h2>

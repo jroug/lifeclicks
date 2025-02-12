@@ -515,7 +515,16 @@ form .MuiFormControl-root{
   .md\:w-half-important {
     width: 50% !important;
   }
+}
 
+@screen xl {
+  .xl\:w-70percent-important {
+    width: 70% !important;
+  }
+  .xl\:w-30percent-important {
+    width: 30% !important;
+  }
+  
 }
  
 
