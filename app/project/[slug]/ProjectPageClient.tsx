@@ -114,7 +114,7 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
                 enabled: true,
                 momentum: true,
               },
-              threshold: 20,
+              touchStartPreventDefault: false,
               // touchAngle: 60,
               // threshold: 10,
               // touchRatio: 1.5,
