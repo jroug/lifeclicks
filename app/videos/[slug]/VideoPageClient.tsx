@@ -3,10 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 // import Image from "next/image";
-// import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperType } from "swiper/types";
-import { FreeMode, Pagination, Mousewheel } from "swiper/modules";
+import Link from "next/link";
 import { motion } from "framer-motion";
 // import poster from '@/public/images/loader-video.png'; // Adjust the path
 import { useGlobalState } from "@/context/PageAnimatePresence";
@@ -65,8 +62,9 @@ const VideoPageClient: React.FC<VideoPageClientProps> = ({
     >
       <main className="project-slider relative flex flex-col items-center justify-center custom-slider-height">
             <div className="flex w-full h-full relative bg-white flex-col xl:flex-row">
-              <div className="relative z-10 bg-white flex flex-col items-center justify-center h-full w-full xl:w-30percent-important">
-                <h1 className="font-cormorant_garamond uppercase w-full text-5xl text-black text-center p-[20px]">
+              <div className="relative z-10 bg-white flex flex-col items-center justify-center h-[40%] md:h-full    w-full xl:w-30percent-important">
+                <div className="flex w-full justify-center md:pb-[50px] md:mt-[-100px]"><Link href={"/videos"}>BACK TO ALL VIDEOS</Link></div>
+                <h1 className="font-cormorant_garamond uppercase w-full text-3xl md:text-5xl text-black text-center p-[20px]">
                   {projectTitle}
                 </h1>
               </div>
