@@ -45,36 +45,28 @@ export default function SlideshowImage({ mediaSources, title, place, uri, idx, i
         {
             mediaSources[0].postMimeType?.startsWith('video') 
               ? 
-                  // <video
-                  //     src={mediaSources[0].postExcerpt} // Video source sent to postExcerpt due to bug in GraphQL field
-                  //     className="w-full h-full object-cover aspect-[74/97]"
-                  //     autoPlay
-                  //     loop
-                  //     muted
-                  //     playsInline
-                  //     poster={poster.src}
-                  // />
-                  <Image
-                  
-                  src={poster.src}
-                  alt={ title || ""}
-                  width="100"
-                  height="119"
-                  priority={true}
-              />
+                  <video
+                      src={mediaSources[0].postExcerpt} // Video source sent to postExcerpt due to bug in GraphQL field
+                      className="w-full h-full object-cover aspect-[74/97]"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      poster={poster.src}
+                  />
               :
                 isMobile
                 ?
                     <Image
-                        className="w-full h-full object-cover aspect-[74/97]"
-                        src={mediaSources[0].fullFileUrl || "" }
-                        alt={title || ""}
-                        width={mediaSources[0].fullWidth || undefined}
-                        height={mediaSources[0].fullHeight || undefined}
-                        priority={ idx > (initialImagesNumber - 1) ? false : true}
-                        placeholder='blur'
-                        blurDataURL={poster.src}
-                    />
+                      className="w-full h-full object-cover aspect-[74/97]"
+                      src={mediaSources[0].fullFileUrl || "" }
+                      alt={title || ""}
+                      width={mediaSources[0].fullWidth || undefined}
+                      height={mediaSources[0].fullHeight || undefined}
+                      priority={ idx > (initialImagesNumber - 1) ? false : true}
+                      placeholder='blur'
+                      blurDataURL={poster.src}
+                  />
                 :
                   <Swiper
                     modules={[Autoplay, EffectFade]}

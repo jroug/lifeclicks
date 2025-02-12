@@ -20,8 +20,8 @@ export default function HomePageClient({ homePageProjectData }: HomePageClientPr
 
   const { isMobile, thisIsTheFirstLoad, setThisIsTheFirstLoad } = useGlobalState();
 
-  const initialImagesNumber = isMobile ? 6 : 12;
-  const lazyLoadNumber = isMobile? 6 : 12;
+  const initialImagesNumber = isMobile ? 12 : 24;
+  const lazyLoadNumber = isMobile? 12 : 24;
  
   const homePageProjectDataLength = Object.entries(homePageProjectData).length;
   const modulo4 = homePageProjectDataLength % 4;
