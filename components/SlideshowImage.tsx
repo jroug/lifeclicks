@@ -41,7 +41,7 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
     <Link href={uri} className="w-full h-full relative group homeslide" scroll={false}>
       <div className="w-full h-full" >
         {
-            mediaSources[0].postMimeType.startsWith('video') 
+            mediaSources[0].postMimeType?.startsWith('video') 
               ? 
                   <video
                       src={mediaSources[0].postExcerpt} // Video source sent to postExcerpt due to bug in GraphQL field
