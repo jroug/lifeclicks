@@ -112,7 +112,12 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
               direction: "vertical",
               freeMode: {
                 enabled: true,
-              }
+                momentum: true,
+              },
+              threshold: 20,
+              // touchAngle: 60,
+              // threshold: 10,
+              // touchRatio: 1.5,
             },
           }}
         >
