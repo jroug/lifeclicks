@@ -112,16 +112,7 @@ const ProjectPageClient: React.FC<ProjectPageClientProps> = ({
               direction: "vertical",
               freeMode: {
                 enabled: true,
-                momentum: true,
-              },
-              mousewheel: {
-                enabled: true,
-                forceToAxis: true,
-                sensitivity: 10,
-                releaseOnEdges: true,
-              },
-              // touchAngle: 60,
-              // touchRatio: 1.5,
+              }
             },
           }}
         >
