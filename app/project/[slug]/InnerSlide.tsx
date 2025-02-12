@@ -1,4 +1,3 @@
-"use client";
 import Image from 'next/image';
 import poster from '@/public/images/loader-video.png'; // Adjust the path
 
