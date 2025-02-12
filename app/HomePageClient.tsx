@@ -53,6 +53,7 @@ export default function HomePageClient({ homePageProjectData }: HomePageClientPr
                   + (index >= homePageProjectDataLength - modulo2 ? ' modulo2' : '')
                   + (index >= homePageProjectDataLength - modulo3 ? ' modulo3' : '')
                   + (index >= homePageProjectDataLength - modulo4 ? ' modulo4' : '')
+                  + (index > 4 ? 'hidden' : '')
               }
               data-index={index}
             >

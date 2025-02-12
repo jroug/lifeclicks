@@ -24,18 +24,16 @@ const Footer: React.FC<MenuProps> = ({ socialMenuData }) => {
 
                     <div className="order-1 md:order-2 sm:flex sm:flex-col items-center justify-center col-span-2 md:col-span-1 pt-[40px] md:p-10">
                         <p className="pb-4" >
-                            
-                            <span className="underline-effect">
-                                <Link href={ socialMenuItems.edges[0].node.uri } target={ socialMenuItems.edges[0].node.target } className="uppercase text-xs" scroll={false}>{ socialMenuItems.edges[0].node.label }</Link> 
-                            </span>
-                            <span> | </span>
-                            <span className="underline-effect"> 
-                                <Link href={ socialMenuItems.edges[1].node.uri } target={ socialMenuItems.edges[1].node.target } className="uppercase text-xs" scroll={false}>{ socialMenuItems.edges[1].node.label }</Link> 
-                            </span>
-                            <span> | </span>
-                            <span className="underline-effect">
-                                <Link href={ socialMenuItems.edges[2].node.uri } target={ socialMenuItems.edges[2].node.target } className="uppercase text-xs" scroll={false}>{ socialMenuItems.edges[2].node.label }</Link>
-                            </span>
+                            {
+                                socialMenuItems.edges.map((edge, i) => (
+                                    <React.Fragment key={"social_footer"+i}>
+                                        <span className="underline-effect">
+                                            <Link href={ edge.node.uri } target={ edge.node.target } className="uppercase text-xs" scroll={false}>{ edge.node.label }</Link> 
+                                        </span>
+                                        {i < socialMenuItems.edges.length - 1 && <span> | </span>}
+                                    </React.Fragment>
+                                ))
+                            }
                         </p>
                     </div>
 

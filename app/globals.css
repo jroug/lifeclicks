@@ -162,6 +162,21 @@ footer{
 .menu-items li:nth-child(5) a{
   transition-delay: 0.25s;
 }
+.menu-items li:nth-child(6) a{
+  transition-delay: 0.30s;
+}
+.menu-items li:nth-child(7) a{
+  transition-delay: 0.35s;
+}
+.menu-items li:nth-child(8) a{
+  transition-delay: 0.40s;
+}
+.menu-items li:nth-child(9) a{
+  transition-delay: 0.45s;
+}
+.menu-items li:nth-child(10) a{
+  transition-delay: 0.50s;
+}
 
 .menu-social-item-wrapper{
   overflow: hidden;
@@ -179,22 +194,44 @@ footer{
   transition: bottom var(--reveal-menu-items-time) cubic-bezier(0.25, 0.8, 0.25, 1); /* reveal effect for social media on the right */ 
 }
 
-#main-menu.open .menu-social-item-wrapper:nth-child(5) a{
-  transition-delay: 0.5s;
-}
-#main-menu.open .menu-social-item-wrapper:nth-child(4) span{
-  transition-delay: 0.55s;
-}
-#main-menu.open .menu-social-item-wrapper:nth-child(3) a{
-  transition-delay: 0.6s;
-}
-#main-menu.open .menu-social-item-wrapper:nth-child(2) span{
-  transition-delay: 0.65s;
-}
-#main-menu.open .menu-social-item-wrapper:nth-child(1) a{
-  transition-delay: 0.7s;
+.rotate-90--{
+  transform-origin: 50% 50%;
+  transform: translate(142px, 50%) rotate(-90deg);
 }
 
+.delay-500 {
+  transition-delay: 500ms !important;
+}
+.delay-550 {
+  transition-delay: 550ms !important;
+}
+.delay-600 {
+  transition-delay: 600ms !important;
+}
+.delay-650 {
+  transition-delay: 650ms !important;
+}
+.delay-700 {
+  transition-delay: 700ms !important;
+}
+.delay-750 {
+  transition-delay: 750ms !important;
+}
+.delay-800 {
+  transition-delay: 800ms !important;
+}
+.delay-850 {
+  transition-delay: 850ms !important;
+}
+.delay-900 {
+  transition-delay: 900ms !important;
+}
+.delay-950 {
+  transition-delay: 950ms !important;
+}
+.delay-1000 {
+  transition-delay: 1000ms !important;
+}
  
 
 .custom-main-menu-wrapper.open .menu-social-item-wrapper a,
@@ -448,6 +485,10 @@ form .MuiFormControl-root{
 
 
 @media only screen and (max-width: 500px) {
+
+  .rotate-90--{
+    transform: translate(102px, 50%) rotate(-90deg);
+  }
   header .grid div{
     height: 55px;
   }
@@ -550,6 +591,9 @@ form .MuiFormControl-root{
   max-height: 100px; /* A value larger than the maximum height of your content */
 }
 
+.about-content p{
+  margin-bottom:10px;
+}
 
 .post-content-wrapper p{
   margin-bottom: 20px;
@@ -570,3 +614,4 @@ form .MuiFormControl-root{
     transition-duration: 300ms !important;
   } 
 } 
+

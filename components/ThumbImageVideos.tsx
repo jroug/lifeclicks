@@ -2,9 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import poster from '@/public/images/loader-video.png'; // Adjust the path
+import poster from '@/public/logo-mini-black.svg'; // Adjust the path
 // import { logDev } from '@/utils/logDev';
-
 
 interface SlideshowImageProps {
   videoSource: VideoMedia;
@@ -33,7 +32,16 @@ export default function ThumbImageVideos({ videoSource, title, uri }: SlideshowI
           />
           :
           <div className="flex flex-col items-center justify-center w-full h-full">
-            <h3 className="text-[30px] pb-[60px]">VIDEO</h3>
+              <div  className="w-full h-full aspect-[74/97] flex justify-center" >     
+                <Image
+                  
+                    src={poster.src}
+                    alt={ title || ""}
+                    width="100"
+                    height="119"
+                    priority={true}
+                />
+            </div>
           </div>
         }
       </div>

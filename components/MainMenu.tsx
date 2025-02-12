@@ -52,23 +52,24 @@ const MainMenu: React.FC<MenuProps> = ({ mainMenuData, socialMenuData }) => {
                         }
                     </ul>
                 </div>
-                <div className="flex flex-col items-end justify-center h-custom">
-                    <p className="social-in-menu pb-4 border-custom rotate-90- social-links-menu">
-                        <span className="menu-social-item-wrapper" >
-                            <Link href={ socialMenuItems.edges[2].node.uri } target={ socialMenuItems.edges[2].node.target } className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>{ socialMenuItems.edges[2].node.label }</Link> 
-                        </span>
-                        <span className="menu-social-item-wrapper" >
-                            <span className="menu-element p-4" >|</span>
-                        </span>
-                        <span className="menu-social-item-wrapper" >
-                            <Link href={ socialMenuItems.edges[1].node.uri } target={ socialMenuItems.edges[1].node.target } className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>{ socialMenuItems.edges[1].node.label }</Link> 
-                        </span>
-                        <span className="menu-social-item-wrapper" >
-                            <span className="menu-element p-4" >|</span>
-                        </span>
-                        <span className="menu-social-item-wrapper" >
-                            <Link href={ socialMenuItems.edges[0].node.uri } target={ socialMenuItems.edges[0].node.target } className="menu-element uppercase font-bold" onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>{ socialMenuItems.edges[0].node.label }</Link>
-                        </span>
+                <div className="overflow-hidden flex flex-col items-end justify-center h-custom">
+                    <p className="social-in-menu pb-4 border-custom rotate-90-- social-links-menu">
+                        {
+                            socialMenuItems.edges.map((edge, i) => (
+                                <React.Fragment key={"social_footer"+i}>
+                                    <span className="menu-social-item-wrapper" >
+                                        <Link href={ edge.node.uri } target={ edge.node.target } className={"menu-element uppercase font-bold delay-" + (500+((socialMenuItems.edges.length-i)*100))} onMouseOver={(e) => handleHover(e, true)} onMouseOut={(e) => handleHover(e, false)} scroll={false}>{ edge.node.label }</Link> 
+                                    </span>
+                                    {
+                                        i < socialMenuItems.edges.length - 1 
+                                        && 
+                                        <span className="menu-social-item-wrapper" >
+                                            <span className={"menu-element p-4 delay-" + (450+((socialMenuItems.edges.length-i)*100))} >|</span>
+                                        </span>
+                                    }
+                                </React.Fragment>
+                            ))
+                        }
                     </p>
                 </div>
             </div>
