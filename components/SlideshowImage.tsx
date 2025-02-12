@@ -10,6 +10,7 @@ import { useRef } from 'react';
 import type { Swiper as SwiperInstance } from 'swiper';
 import Image from 'next/image';
 import poster from '@/public/images/loader-video.png'; // Adjust the path
+import { useGlobalState } from "@/context/PageAnimatePresence"; 
 
 interface SlideshowImageProps {
   mediaSources: ProjectMedia[];
@@ -20,6 +21,8 @@ interface SlideshowImageProps {
 
 export default function SlideshowImage({ mediaSources, title, place, uri }: SlideshowImageProps) {
   const swiperRef = useRef<SwiperInstance | null>(null);
+
+  const { isMobile } = useGlobalState();
 
   const handleMouseEnter = () => {
     // console.log('handleMouseEnter');
@@ -50,6 +53,19 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
                       poster={poster.src}
                   />
               :
+                isMobile
+                ?
+                    <Image
+                      className="w-full h-full object-cover aspect-[74/97]"
+                      src={mediaSources[0].fullFileUrl || "" }
+                      alt={title || ""}
+                      width={mediaSources[0].fullWidth || undefined}
+                      height={mediaSources[0].fullHeight || undefined}
+                      priority={true}
+                      placeholder='blur'
+                      blurDataURL={poster.src}
+                  />
+                :
                   <Swiper
                     modules={[Autoplay, EffectFade]}
                     slidesPerView={1}

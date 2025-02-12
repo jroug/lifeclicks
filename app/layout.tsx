@@ -9,13 +9,13 @@ import PageAnimatePresence from "@/context/PageAnimatePresence";
 import Header from "@/components/Header";
 import MainMenu from "@/components/MainMenu";
 
+// Utilities
 import { fetchData } from "@/utils/dataFetcher";
 import { logDev } from "@/utils/logDev";
 
- 
+import { isMobileDevice } from "@/utils/detectDevice"; // import the function
 
-// Utilities
-// import { logDev } from "@/utils/logDev";
+
 
 // Metadata for the application
 export const metadata: Metadata = {
@@ -34,6 +34,9 @@ export default async function RootLayout({
   logDev('fetchData - layout.tsx 1');
   const { mainMenuItems, socialMenuItems, projectsMap, pagesMap, postsMap, videosMap } = await fetchData();
   logDev('fetchData - layout.tsx 2');
+
+  const isMobile = await isMobileDevice();
+  logDev('isMobile', isMobile);
 
   return (
     <html lang="en">
@@ -65,7 +68,7 @@ export default async function RootLayout({
 
         {/* Context Providers */}
         {/* <SiteDataProvider data={{ projectsMap, pagesMap }} > */}
-          <PageAnimatePresence socialMenuData={ socialMenuItems } projectsMap={projectsMap} pagesMap={pagesMap} postsMap={postsMap} videosMap={videosMap}>
+          <PageAnimatePresence isMobile={isMobile} socialMenuData={ socialMenuItems } projectsMap={projectsMap} pagesMap={pagesMap} postsMap={postsMap} videosMap={videosMap}>
             {children}
           </PageAnimatePresence>
         {/* </SiteDataProvider> */}
