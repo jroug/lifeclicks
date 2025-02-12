@@ -65,8 +65,8 @@ declare global {
     interface ProjectMedia {
         id: string;
         fullFileUrl: string | undefined;
-        postMimeType: string;
-        postExcerpt: string | undefined;
+        postMimeType?: string;
+        postExcerpt?: string | undefined;
         postTitle?: string | null;
         fullWidth?: number | null;
         fullHeight?: number | null;
