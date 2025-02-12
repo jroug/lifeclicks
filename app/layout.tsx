@@ -46,8 +46,10 @@ export default async function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
         <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
-        {/* Cookie script */}
-        <script
+
+        {/* Load Cookie Script Only in Production */}
+        {process.env.NEXT_PUBLIC_ENV_NAME === 'live' && (
+          <script
             dangerouslySetInnerHTML={{
               __html: `
                 (function() {
@@ -60,6 +62,8 @@ export default async function RootLayout({
               `,
             }}
           />
+        )}
+
       </head>
       <body className="antialiased custom-padding-top bg-black">
         {/* Header and Main Menu */}
