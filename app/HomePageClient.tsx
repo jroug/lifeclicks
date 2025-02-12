@@ -18,9 +18,10 @@ interface HomePageClientProps {
 
 export default function HomePageClient({ homePageProjectData }: HomePageClientProps) {
 
-  const { thisIsTheFirstLoad, setThisIsTheFirstLoad } = useGlobalState();
+  const { isMobile, thisIsTheFirstLoad, setThisIsTheFirstLoad } = useGlobalState();
 
-
+  const initialImagesNumber = isMobile ? 6 : 12;
+  const lazyLoadNumber = isMobile? 6 : 12;
  
   const homePageProjectDataLength = Object.entries(homePageProjectData).length;
   const modulo4 = homePageProjectDataLength % 4;
@@ -28,10 +29,37 @@ export default function HomePageClient({ homePageProjectData }: HomePageClientPr
   const modulo2 = homePageProjectDataLength % 2;
 
 
-  useEffect(() => {
+ 
+
+    // Function to detect scrolling to the bottom
+    useEffect(() => {
+
       logDev('renderHome');
       setThisIsTheFirstLoad(false);
-  }, []); // Runs every time the pathname changes
+      const outerDiv = document.querySelector(".outer-motion-div");
+      if (!outerDiv) return;
+
+      const handleScroll = () => {
+        if (
+          outerDiv.scrollTop + outerDiv.clientHeight >= outerDiv.scrollHeight - 100 // Near bottom
+        ) {
+          logDev('loadMore');
+          const slides = document.querySelectorAll(".homeslide.hidden");
+          slides.forEach((slide, index) => {
+            if (slide.classList.contains("hidden") && index < lazyLoadNumber) {
+              slide.classList.remove("hidden"); // Remove "hidden" class from the first 4 elements
+            }
+          });
+        }
+      };
+    
+      outerDiv.addEventListener("scroll", handleScroll);
+    
+      return () => {
+        outerDiv.removeEventListener("scroll", handleScroll);
+      };
+    }, [homePageProjectDataLength, lazyLoadNumber]);
+
 
 
   return (
@@ -49,10 +77,11 @@ export default function HomePageClient({ homePageProjectData }: HomePageClientPr
             <div
               key={`key-${key}`}
               className={
-                  "group flex justify-center overflow-hidden text-center" 
+                  "homeslide group flex justify-center overflow-hidden text-center" 
                   + (index >= homePageProjectDataLength - modulo2 ? ' modulo2' : '')
                   + (index >= homePageProjectDataLength - modulo3 ? ' modulo3' : '')
                   + (index >= homePageProjectDataLength - modulo4 ? ' modulo4' : '')
+                  + (index > (initialImagesNumber - 1) ? ' hidden ' : '')
               }
               data-index={index}
             >
@@ -62,6 +91,8 @@ export default function HomePageClient({ homePageProjectData }: HomePageClientPr
                 title={project.title}
                 place={project.projectExtras.eventPlace}
                 uri={project.uri}
+                idx={index}
+                initialImagesNumber = {initialImagesNumber}
               />
             </div>
           ))}

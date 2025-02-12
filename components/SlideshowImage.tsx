@@ -17,9 +17,11 @@ interface SlideshowImageProps {
   title: string;
   place: string;
   uri: string;
+  idx: number;
+  initialImagesNumber: number;
 }
 
-export default function SlideshowImage({ mediaSources, title, place, uri }: SlideshowImageProps) {
+export default function SlideshowImage({ mediaSources, title, place, uri, idx, initialImagesNumber }: SlideshowImageProps) {
   const swiperRef = useRef<SwiperInstance | null>(null);
 
   const { isMobile } = useGlobalState();
@@ -61,7 +63,7 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
                       alt={title || ""}
                       width={mediaSources[0].fullWidth || undefined}
                       height={mediaSources[0].fullHeight || undefined}
-                      priority={true}
+                      priority={ idx > (initialImagesNumber - 1) ? false : true}
                       placeholder='blur'
                       blurDataURL={poster.src}
                   />
@@ -82,7 +84,7 @@ export default function SlideshowImage({ mediaSources, title, place, uri }: Slid
                                     alt={title || ""}
                                     width={media.fullWidth || undefined}
                                     height={media.fullHeight || undefined}
-                                    priority={true}
+                                    priority={ idx>5 ? false : true}
                                     placeholder='blur'
                                     blurDataURL={poster.src}
                                 />
