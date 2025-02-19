@@ -15,7 +15,7 @@ export default function ThumbImageVideos({ videoSource, title, uri }: SlideshowI
   // logDev('videoSource', videoSource);
 
   return (
-    <Link href={uri} className="w-full h-full relative group homeslide" scroll={false}>
+    <Link href={uri.replace('videos/', 'films/')} className="w-full h-full relative group homeslide" scroll={false}>
       <div className="w-full h-full" >
         { 
           videoSource 

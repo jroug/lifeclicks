@@ -1,7 +1,7 @@
-import VideoPageClient from "./VideoPageClient";
+import FilmPageClient from "./FilmPageClient";
 import type { Metadata } from "next";
-import { fetchData } from "@/utils/dataFetcher";
-import { logDev } from "@/utils/logDev";
+// import { fetchData } from "@/utils/dataFetcher";
+// import { logDev } from "@/utils/logDev";
 import { buildHeadTitle } from "@/utils/buildHeadTitle";
 
 type Props = {
@@ -19,7 +19,7 @@ export async function generateMetadata( { params }: Props ): Promise<Metadata> {
 
 
   return {
-    title: buildHeadTitle('video', slug)
+    title: buildHeadTitle('films', slug)
     // title: ( slug in projectsMap ) && slug ? buildHeadTitle(projectsMap[slug].title) : '404'
   };
 
@@ -28,13 +28,13 @@ export async function generateMetadata( { params }: Props ): Promise<Metadata> {
 
  
 
-export default async function Video({ params }: Props) {
+export default async function Film({ params }: Props) {
   const slug = (await params).slug;
 
   // logDev("project data 1  " + slug);
   // const { projectsMap } = await fetchData();
   // logDev("project data 2 " + slug);
 
-  return <VideoPageClient slug={slug} />;
+  return <FilmPageClient slug={slug} />;
   
 }

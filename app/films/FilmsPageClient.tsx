@@ -14,7 +14,7 @@ interface VideoPageClientProps {
   videosData: VideosMap;
 }
 
-export default function VideosPageClient({ videosData }: VideoPageClientProps) {
+export default function FilmsPageClient({ videosData }: VideoPageClientProps) {
 
   const { thisIsTheFirstLoad } = useGlobalState();
 

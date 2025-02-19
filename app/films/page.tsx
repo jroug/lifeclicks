@@ -1,4 +1,4 @@
-import VideosPageClient from "./VideosPageClient";
+import FilmsPageClient from "./FilmsPageClient";
 import { fetchData } from "@/utils/dataFetcher";
 import { logDev } from "@/utils/logDev";
 import type { Metadata } from "next";
@@ -7,10 +7,10 @@ import { buildHeadTitle } from "@/utils/buildHeadTitle";
 logDev('fetchData - Home 1');
 const { videosMap, pagesMap } = await fetchData();
 logDev('fetchData - Home 2');
-
+// console.log('pagesMap', pagesMap);
 // Metadata for the application
 export const metadata: Metadata = {
-  title: ('videos' in pagesMap) ? buildHeadTitle('other', pagesMap['videos'].title) : "404"
+  title: ('films' in pagesMap) ? buildHeadTitle('other', pagesMap['films'].title) : "404"
 };
 
 
@@ -18,6 +18,6 @@ export const metadata: Metadata = {
 export default function Videos() {
 
     return (
-      <VideosPageClient videosData={ videosMap } />
+      <FilmsPageClient videosData={ videosMap } />
     );
 }
