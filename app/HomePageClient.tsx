@@ -29,7 +29,7 @@ export default function HomePageClient({ homePageProjectData }: HomePageClientPr
   const modulo2 = homePageProjectDataLength % 2;
 
 
- 
+    // logDev(homePageProjectData);
 
     // Function to detect scrolling to the bottom
     useEffect(() => {

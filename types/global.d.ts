@@ -126,6 +126,7 @@ declare global {
     }
     interface VideosExtras {
       vimeoId: string;
+      youtubeId: string;
     }
 
 

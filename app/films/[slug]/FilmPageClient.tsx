@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 // import Image from "next/image";
 import Link from "next/link";
@@ -52,6 +52,15 @@ const VideoPageClient: React.FC<VideoPageClientProps> = ({
     nextVideoSlug,
   } = videosMap[slug];
 
+
+  const whatToPlayUrl = videosExtras.vimeoId && videosExtras.vimeoId.trim() ? `https://vimeo.com/${videosExtras.vimeoId}` 
+  : 
+  videosExtras.youtubeId && videosExtras.youtubeId.trim() ? `https://www.youtube.com/watch?v=${videosExtras.youtubeId}` 
+  : 
+  null;
+
+  const [isReady, setIsReady] = useState(false);
+
   return (
     <motion.div
       initial="initial"
@@ -69,12 +78,21 @@ const VideoPageClient: React.FC<VideoPageClientProps> = ({
                 </h1>
               </div>
               <div className="flex flex-col h-full relative w-full xl:w-70percent-important ">
+                {!isReady && (
+                  <div className="flex items-center justify-center h-full text-lg font-semibold text-gray-600">
+                    Loading...
+                  </div>
+                )}
+                {whatToPlayUrl && (
                   <ReactPlayer
-                    url={"https://vimeo.com/" + videosExtras.vimeoId }
+                    url={whatToPlayUrl}
                     width="100%"
                     height="100%"
                     controls
+                    style={{ display: isReady ? "block" : "none" }}
+                    onReady={() => setIsReady(true)}
                   />
+                )}
               </div>
             </div>
       </main>

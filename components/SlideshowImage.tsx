@@ -77,6 +77,7 @@ export default function SlideshowImage({ mediaSources, title, place, uri, idx, i
                     onSwiper={(swiper) => (swiperRef.current = swiper)} // Capture the Swiper instance
                   >
                         {mediaSources.map((media, index) => (
+                          media.fullFileUrl &&
                           <SwiperSlide key={`slide-${index}`}>
                               <Image
                                     className="w-full h-full object-cover aspect-[74/97]"

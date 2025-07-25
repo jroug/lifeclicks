@@ -74,6 +74,7 @@ export const ALL_DATA = gql`
           uri
           videosExtras {
               vimeoId
+              youtubeId
           }
           featuredImage{
           	node{
